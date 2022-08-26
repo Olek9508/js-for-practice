@@ -1,0 +1,102 @@
+@import "~node_modules/modern-normalize/modern-normalize.css";
+
+body,
+button,
+input,
+textarea {
+	font-family: "Montserrat", sans-serif;
+	font-weight: 500;
+	background-color: #ffffff;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+ul,
+ol {
+	margin-top: 0;
+	margin-bottom: 0;
+	padding-left: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+img {
+	display: block;
+}
+
+address {
+	font-style: normal;
+}
+
+li {
+	list-style: none;
+}
+
+.list {
+	list-style: none;
+}
+
+.link {
+	text-decoration: none;
+}
+
+.container {
+	padding-left: 20px;
+	padding-right: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	
+
+	@media screen and(min-width: 480px) {
+		width: 480px;
+	}
+
+	@media screen and(min-width: 768px) {
+		padding-left: 32px;
+		padding-right: 32px;
+		width: 768px;
+	}
+
+	@media screen and(min-width: 1280px) {
+		width: 1280px;
+	}
+}
+
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	border: 0;
+	padding: 0;
+	white-space: nowrap;
+	clip-path: inset(100%);
+	clip: rect(0000);
+	overflow: hidden;
+}
+
+:root {
+	// Темний(чорний) колір тексту
+	--primary-text-color: #000000;
+
+	// білий текст кольору
+	--secondary-white-text-color: #ffffff;
+
+	// Червоний колір тексту - колір поточної сторінки
+	--third-red-text-color: #ff001b;
+
+	// оранжевый акцент
+	--accent-color: #ff6b08;
+}
+

@@ -1,0 +1,12 @@
+.team {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    padding: 40px;
+
+    &__title {
+      text-align: center;
+    }
+}

@@ -1,0 +1,42 @@
+<header class="header">
+  <div class="header-thumb hidden"></div>
+  <div class="container">
+    <div class="header-container">
+      <div class="header-menu">
+        <a href="./index.html" class="header-menu__logo">
+          <img class="menu-logo__logo" src="./images/logo.svg" alt="logo" />
+          <h1 class="menu-logo__text logo-text__animation">Filmoteka</h1>
+        </a>
+        <ul class="header-menu__nav">
+          <li class="menu-nav__link">
+            <button id="home" class="nav-link__item current">HOME</button>
+          </li>
+          <li class="menu-nav__link">
+
+            <button id="library" class="nav-link__item btn link-library">MY LIBRARY</button>
+
+          </li>
+        </ul>
+      </div>
+
+      <div class="header-main">
+        <form action="#" class="header-search">
+          <div class="input-container">
+            <input
+              class="search-input"
+              type="text"
+              placeholder="Movie search"
+            />
+            <svg class="search-icon">
+              <use href="./images/symbol-defs.svg#icon-search"></use>
+            </svg>
+          </div>
+          <div class="header-search__container unvisible">
+            <button class="library-button library-first">WATCHED</button>
+            <button class="library-button library-second">QUEUE</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</header>

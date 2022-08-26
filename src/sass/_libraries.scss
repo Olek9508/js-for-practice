@@ -1,9 +1,11 @@
+
 .images-cinema {
     margin-left: auto;
     margin-right: auto;
     
     display: block;
     width: 100%;
+
 
     @media screen and(min-width: 480px) {
         width: 440px;
@@ -17,6 +19,7 @@
         width: 1216px;
     }
 }
+
 
 .p-library {
     color: var(--secondary-white-text-color);

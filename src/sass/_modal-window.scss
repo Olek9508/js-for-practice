@@ -18,6 +18,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     padding-bottom: 40px;
+    background-color: white;
 }
 
 .modal-window__close-btn {
@@ -39,11 +40,16 @@
     display: flex;
 }
 
+.modal-window__image {
+    border-radius: 10px;
+}
+
 .modal-window__title {
     margin-bottom: 20px;
     font-weight: 500;
     font-size: 30px;
     line-height: 1.16;
+    text-transform: uppercase;
 }
 
 .modal-window__wraper {
@@ -56,6 +62,10 @@
 
 .modal-window__value-list {
     margin-bottom: 20px;
+}
+
+.modal-window__original-title {
+    text-transform: uppercase;
 }
 
 .modal-window__parameter-item,
@@ -119,6 +129,10 @@
     border-color: var(--accent-color);
     background-color: var(--accent-color);
     color: var(--secondary-white-text-color);
+}
+
+.film_card {
+    cursor: pointer;
 }
 
 // 0px - 319px

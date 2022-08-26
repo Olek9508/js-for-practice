@@ -115,3 +115,44 @@ color: var(--accent-color);
         line-height: 24px;
     }
 }
+
+// добавив деякі єфффекти на карточку при ховері та фокусу 
+
+.film_card {
+    transition: 800ms;
+
+}
+
+.film_card:hover {
+
+    transform: scale(1.05);
+    box-shadow: 2px 0px 86px -2px rgba(255, 107, 8, 0.43);
+    -webkit-box-shadow: 2px -1px 86px -2px rgba(255, 107, 8, 0.43);
+    -moz-box-shadow: 2px -1px 86px -2px rgba(255, 107, 8, 0.43);
+
+    .film_card__title{
+        animation-name: cardimage;
+        animation-duration: 500ms;
+        animation-iteration-count: infinite;
+    }
+}
+
+@keyframes cardimage {
+    0% {
+        opacity: 0.5;
+        text-shadow: 0 0 10px rgba(255, 107, 8, 1),
+                0 0 20px rgba(255, 107, 8, 1), 
+                0 0 40px rgba(255, 107, 8, 1),
+                0 0 80px rgba(255, 107, 8, 1), 
+                0 0 160px rgba(255, 107, 8, 1), 
+    }
+
+    97% {
+        opacity: 1;
+        text-shadow: 0 0 10px rgba(255, 107, 8, 1),
+                0 0 20px rgba(255, 107, 8, 1),
+                0 0 40px rgba(255, 107, 8, 1),
+                0 0 80px rgba(255, 107, 8, 1),
+                0 0 160px rgba(255, 107, 8, 1),
+    }
+}

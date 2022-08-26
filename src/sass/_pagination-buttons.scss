@@ -1,20 +1,45 @@
 .pagination-nav {
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .current-page {
-    background-color: red;
+    background-color: var(--accent-color);
+    border-radius: 5px;
+    color: var(--secondary-white-text-color);
 }
 
 .pagination-nav_button {
-    margin-left: 7px;
+    margin-left: 4px;
+    font-style: inherit;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33;
+    border: none;
+    width: 40px;
+    height: 40px;
 
     &:first-child {
         margin-left: 0;
     }
+
+    &:disabled {
+        display: none;
+    }
+}
+
+.pagination-nav_arrow {
+    width: 16px;
+    height: 16px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .dots {
-    margin-left: 7px;
+    font-style: inherit;
+    font-size: 12px;
+    line-height: 1.33;
+    padding-bottom: 5px;
 }

@@ -8,8 +8,8 @@ async function getTrendingMovies (page) {
     return response
 }
 
-async function getMovieByKeyword (keyword) {
-    const response = await axios.get(`${BASE_URL}search/movie?api_key=${KEY}&query=${keyword}`)
+async function getMovieByKeyword (keyword, page) {
+    const response = await axios.get(`${BASE_URL}search/movie?api_key=${KEY}&query=${keyword}&page=${page}`)
     return response
 }
 
@@ -27,14 +27,3 @@ export { getTrendingMovies }
 export { getMovieByKeyword }
 export { getMovieDetails }
 export { getMovieGenres }
-
-// Example:
-// import { getTrendingMovies } from './js/fetchFilms'
-// import { getMovieByKeyword } from './js/fetchFilms'
-// import { getMovieDetails } from './js/fetchFilms'
-// export { getMovieGenres }
-
-// getTrendingMovies().then(film => console.log(film.data))
-// getMovieByKeyword("Potter").then(film => console.log(film.data))
-// getMovieDetails(157336).then(film => console.log(film.data))
-// getMovieGenres().then(film => console.log(film))

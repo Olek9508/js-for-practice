@@ -2,15 +2,15 @@ import { getTrendingMovies } from './fetchFilms'
 
 const gallery = document.querySelector('.films_list')
 
-function buildTrendingsMovies(){
-    getTrendingMovies(1)
-    .then(films => {
-        gallery.innerHTML = ''
-        gallery.insertAdjacentHTML('beforeend', renderTrendingMovies(films.data.results))
-    })
-    .catch('error')
+// function buildTrendingsMovies(){
+//     getTrendingMovies(1)
+//     .then(films => {
+//         gallery.innerHTML = ''
+//         gallery.insertAdjacentHTML('beforeend', renderTrendingMovies(films.data.results))
+//     })
+//     .catch('error')
 
-    }
+//     }
 
 function renderTrendingMovies(filmsList) {
     const markup = filmsList
@@ -60,16 +60,15 @@ function renderTrendingMovies(filmsList) {
       )
       .join('')
     
-    console.log(markup)
-    gallery.insertAdjacentHTML('beforeend', markup)
-    return markup
+    // console.log(markup)
+    gallery.innerHTML= markup
   }
 
-buildTrendingsMovies()
+// buildTrendingsMovies()
 
 
 
 
 // зробив собі експорт - щоб логіка працювала в файлі при нажаті кнопки HOME   - і повертало рендер
-export { buildTrendingsMovies };
+// export { buildTrendingsMovies };
 export { renderTrendingMovies };

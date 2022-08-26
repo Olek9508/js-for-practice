@@ -1,9 +1,12 @@
-import { getTrendingMovies } from './js/fetchFilms'
+import { getTrendingMovies } from './fetchFilms'
+import { getMovieByKeyword } from './fetchFilms'
+import { renderTrendingMovies } from './renderTrendingMovies'
 
 const paginationButtons = document.querySelector(".pagination-nav")
 let currentPage = 1
 
-function renderButtonsOfPagination({total_pages}) {
+function renderButtonsOfPagination({total_pages}, page) {
+    currentPage = page || currentPage
     let markup = ""
     switch (total_pages) {
         case "1":
@@ -62,7 +65,9 @@ function renderButtonsOfPagination({total_pages}) {
             addCurrentPageClass()
             break
         default: if (currentPage <= 4) {
-            markup = `<button type="button" id="prev-page" class="pagination-nav_button"><</button>
+            markup = `<button type="button" id="prev-page" class="pagination-nav_button"><svg class="pagination-nav_arrow" id="icon-arrow-left2" viewBox="0 0 32 32">
+            <path d="M12.586 27.414l-10-10c-0.781-0.781-0.781-2.047 0-2.828l10-10c0.781-0.781 2.047-0.781 2.828 0s0.781 2.047 0 2.828l-6.586 6.586h19.172c1.105 0 2 0.895 2 2s-0.895 2-2 2h-19.172l6.586 6.586c0.39 0.39 0.586 0.902 0.586 1.414s-0.195 1.024-0.586 1.414c-0.781 0.781-2.047 0.781-2.828 0z"></path>
+            </svg></button>
                 <button type="button" id="first-page" class="pagination-nav_button pagination-nav_button--number current-page">1</button>
                 <button type="button" id="prev-two-page" class="pagination-nav_button pagination-nav_button--number">2</button>
                 <button type="button" id="prev-one-page" class="pagination-nav_button pagination-nav_button--number">3</button>
@@ -71,12 +76,16 @@ function renderButtonsOfPagination({total_pages}) {
                 <button type="button" id="next-two-page" class="pagination-nav_button pagination-nav_button--number">6</button>
                 <span class="dots">...</span>
                 <button type="button" id="last-page" class="pagination-nav_button pagination-nav_button--number">${total_pages}</button>
-                <button type="button" id="next-page" class="pagination-nav_button">></button>`
+                <button type="button" id="next-page" class="pagination-nav_button"><svg class="pagination-nav_arrow" id="icon-arrow-right2" viewBox="0 0 32 32">
+                <path d="M19.414 27.414l10-10c0.781-0.781 0.781-2.047 0-2.828l-10-10c-0.781-0.781-2.047-0.781-2.828 0s-0.781 2.047 0 2.828l6.586 6.586h-19.172c-1.105 0-2 0.895-2 2s0.895 2 2 2h19.172l-6.586 6.586c-0.39 0.39-0.586 0.902-0.586 1.414s0.195 1.024 0.586 1.414c0.781 0.781 2.047 0.781 2.828 0z"></path>
+                </svg></button>`
             paginationButtons.innerHTML = markup
             addCurrentPageClass()
             disableArrow(total_pages)
         } else if (currentPage >= total_pages - 3) {
-            markup = `<button type="button" id="prev-page" class="pagination-nav_button"><</button>
+            markup = `<button type="button" id="prev-page" class="pagination-nav_button"><svg class="pagination-nav_arrow" id="icon-arrow-left2" viewBox="0 0 32 32">
+            <path d="M12.586 27.414l-10-10c-0.781-0.781-0.781-2.047 0-2.828l10-10c0.781-0.781 2.047-0.781 2.828 0s0.781 2.047 0 2.828l-6.586 6.586h19.172c1.105 0 2 0.895 2 2s-0.895 2-2 2h-19.172l6.586 6.586c0.39 0.39 0.586 0.902 0.586 1.414s-0.195 1.024-0.586 1.414c-0.781 0.781-2.047 0.781-2.828 0z"></path>
+            </svg></button>
                 <button type="button" id="first-page" class="pagination-nav_button pagination-nav_button--number">1</button>
                 <span class="dots">...</span>
                 <button type="button" id="prev-two-page" class="pagination-nav_button pagination-nav_button--number">${total_pages - 5}</button>
@@ -85,12 +94,16 @@ function renderButtonsOfPagination({total_pages}) {
                 <button type="button" id="next-one-page" class="pagination-nav_button pagination-nav_button--number">${total_pages - 2}</button>
                 <button type="button" id="next-two-page" class="pagination-nav_button pagination-nav_button--number">${total_pages - 1}</button>
                 <button type="button" id="last-page" class="pagination-nav_button pagination-nav_button--number">${total_pages}</button>
-                <button type="button" id="next-page" class="pagination-nav_button">></button>`
+                <button type="button" id="next-page" class="pagination-nav_button"><svg class="pagination-nav_arrow" id="icon-arrow-right2" viewBox="0 0 32 32">
+                <path d="M19.414 27.414l10-10c0.781-0.781 0.781-2.047 0-2.828l-10-10c-0.781-0.781-2.047-0.781-2.828 0s-0.781 2.047 0 2.828l6.586 6.586h-19.172c-1.105 0-2 0.895-2 2s0.895 2 2 2h19.172l-6.586 6.586c-0.39 0.39-0.586 0.902-0.586 1.414s0.195 1.024 0.586 1.414c0.781 0.781 2.047 0.781 2.828 0z"></path>
+                </svg></button>`
             paginationButtons.innerHTML = markup
             addCurrentPageClass()
             disableArrow(total_pages)
         } else {
-            markup = `<button type="button" id="prev-page" class="pagination-nav_button"><</button>
+            markup = `<button type="button" id="prev-page" class="pagination-nav_button"><svg class="pagination-nav_arrow" id="icon-arrow-left2" viewBox="0 0 32 32">
+            <path d="M12.586 27.414l-10-10c-0.781-0.781-0.781-2.047 0-2.828l10-10c0.781-0.781 2.047-0.781 2.828 0s0.781 2.047 0 2.828l-6.586 6.586h19.172c1.105 0 2 0.895 2 2s-0.895 2-2 2h-19.172l6.586 6.586c0.39 0.39 0.586 0.902 0.586 1.414s-0.195 1.024-0.586 1.414c-0.781 0.781-2.047 0.781-2.828 0z"></path>
+            </svg></button>
                 <button type="button" id="first-page" class="pagination-nav_button pagination-nav_button--number">1</button>
                 <span class="dots">...</span>
                 <button type="button" id="prev-two-page" class="pagination-nav_button pagination-nav_button--number">${currentPage - 2}</button>
@@ -100,43 +113,77 @@ function renderButtonsOfPagination({total_pages}) {
                 <button type="button" id="next-two-page" class="pagination-nav_button pagination-nav_button--number">${currentPage + 2}</button>
                 <span class="dots">...</span>
                 <button type="button" id="last-page" class="pagination-nav_button pagination-nav_button--number">${total_pages}</button>
-                <button type="button" id="next-page" class="pagination-nav_button">></button>`
+                <button type="button" id="next-page" class="pagination-nav_button"><svg class="pagination-nav_arrow" id="icon-arrow-right2" viewBox="0 0 32 32">
+                <path d="M19.414 27.414l10-10c0.781-0.781 0.781-2.047 0-2.828l-10-10c-0.781-0.781-2.047-0.781-2.828 0s-0.781 2.047 0 2.828l6.586 6.586h-19.172c-1.105 0-2 0.895-2 2s0.895 2 2 2h19.172l-6.586 6.586c-0.39 0.39-0.586 0.902-0.586 1.414s0.195 1.024 0.586 1.414c0.781 0.781 2.047 0.781 2.828 0z"></path>
+                </svg></button>`
             paginationButtons.innerHTML = markup
         }
     }
 }
 
-function selectPage({target}) {
+function selectPage({target}, mod) {
     if (target.nodeName !== "BUTTON") {
         return;
       }
 
     if (target.id === "prev-page") {
-        getTrendingMovies(currentPage - 1)
-        .then(({data}) => {
-            console.log(data.results)
-            currentPage-=1
-            renderButtonsOfPagination(data)
-        })
-        
+        switch (mod) {
+            case "local":
+                break
+            case "keyword":
+                getMovieByKeyword(keyword, currentPage - 1).then(({data}) => {
+                    renderTrendingMovies(data.results)
+                    currentPage-=1
+                    renderButtonsOfPagination(data)      
+                })
+                break
+            default:
+                getTrendingMovies(currentPage - 1).then(({data}) => {
+                    renderTrendingMovies(data.results)
+                    currentPage-=1
+                    renderButtonsOfPagination(data)
+                })
+        }
         return
     }
     if (target.id === "next-page") {
-        getTrendingMovies(currentPage + 1)
-        .then(({data}) => {
-            console.log(data.results)
-            currentPage+=1
-            renderButtonsOfPagination(data)
-        })
+        switch (mod) {
+            case "local":
+                break
+            case "keyword":
+                getMovieByKeyword(keyword, currentPage+=1).then(({data}) => {
+                    renderTrendingMovies(data.results)
+                    currentPage+=1
+                    renderButtonsOfPagination(data)      
+                })
+                break
+            default:
+                getTrendingMovies(currentPage + 1).then(({data}) => {
+                    renderTrendingMovies(data.results)
+                    currentPage+=1
+                    renderButtonsOfPagination(data)
+                })
+        }
         return
     }
     
     currentPage = Number(target.textContent)
-    getTrendingMovies(currentPage)
-        .then(({data}) => {
-            console.log(data.results)
-            renderButtonsOfPagination(data)      
-        })
+    switch (mod) {
+        case "local":
+            break
+        case "keyword":
+            getMovieByKeyword(keyword, currentPage).then(({data}) => {
+                renderTrendingMovies(data.results)
+                renderButtonsOfPagination(data)      
+            })
+            break
+        default:
+            getTrendingMovies(currentPage)
+            .then(({data}) => {
+                renderTrendingMovies(data.results)
+                renderButtonsOfPagination(data)      
+            })
+    }
 }
 
 function addCurrentPageClass() {
@@ -161,9 +208,5 @@ function disableArrow(total_pages) {
     }
 }
 
-// getTrendingMovies(currentPage)
-// .then(({data}) => {
-//     console.log(data.results)
-//     paginationButtons.addEventListener("click", selectPage)
-//     renderButtonsOfPagination(data)
-// })
+export { selectPage }
+export { renderButtonsOfPagination }

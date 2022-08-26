@@ -1,9 +1,9 @@
-const openBtn = document.querySelector('.footer__authorship')
+// const openBtn = document.querySelector('.footer__authorship')
 const closeBtn = document.querySelector('.modal__btn')
 const backdrop = document.querySelector('.backdrop')
-const modalWindow = document.querySelector('.modal')
+// const modalWindow = document.querySelector('.modal')
 
-openBtn.addEventListener('click', openModalWindow);
+// openBtn.addEventListener('click', openModalWindow);
 
 function openModalWindow() {
     backdrop.classList.remove('is-hidden');
@@ -30,3 +30,5 @@ document.onkeydown = function(evt) {
         closeModalWindow();
         }
     };
+
+export { openModalWindow }

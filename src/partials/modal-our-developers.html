@@ -1,19 +1,32 @@
 <div class="backdrop is-hidden" data-modal>
     <div class="modal">
         <button class="modal__btn" data-modal-close>
-            <svg class="form__icon--close" width="30" height="30">
+            <svg class="form__icon--close" width="30" height="30" viewBox="0 0 30 30" fill="none">
                 <use href="/src/images/icons.svg#close-cross"></use>
             </svg>
         </button>
+        
+        
 
-        <div class="team">
+        <div class="team glide">
             <h2 class="team__title"> Our team </h2>
-            <ul class="team__list list">
-                <li class="team__item">
-                    <p>Name</p>
-                    <p>Position</p>
-                </li>
-            </ul>
+            <div data-glide-el="track" class="glide__track">
+                <ul class="team__list list glide__slides"></ul>
+            </div>
+
+            <button aria-label="Previous"  class="slider__button" id="prev">
+                <svg class="slider__arrow-left" width="15" height="15">
+                    <use href="/src/images/icons.svg#arrow-left"></use>
+                </svg>
+            </button>
+
+            <button aria-label="Next" class="slider__button" id="next">
+                <svg class="slider__arrow-right" width="15" height="15">
+                    <use href="/src/images/icons.svg#arrow-right"></use>
+                </svg>
+            </button>
+            <div role="tablist" class="dots"></div>
         </div>
+        
     </div>
   </div>

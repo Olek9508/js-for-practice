@@ -4,7 +4,7 @@ import { renderTrendingMovies } from './renderTrendingMovies';
 import { renderButtonsOfPagination } from './pagination';
 import { onHomeClick } from './header';
 
-const searchValue = document.querySelector('.header-search');
+const searchValue = document.querySelector('#search-query');
 const galleryContainer = document.querySelector('.films_list');
 // const films = film.data.results;
 
@@ -15,7 +15,7 @@ let currentPage = 1;
 
 function onCustomSearch(event) {
   event.preventDefault();
-  formValue = event.target.query.value.toLowerCase().trim();
+  formValue = event.target.querySearch.value.toLowerCase().trim();
   console.log(formValue);
   if (!formValue) {
     galleryContainer.innerHTML = '';

@@ -1,6 +1,7 @@
 .team {
     width: 100%;
     position: absolute;
+    
     top: 0;
     left: 0;
     bottom: 0;
@@ -8,5 +9,118 @@
 
     &__title {
       text-align: center;
+      margin-bottom: 10px;
+
+      @media screen and (min-width: 768px) {
+        margin-bottom: 35px;
+      }
+    }
+
+    &__subtitle {
+      text-align: center;
+      margin-top: 10px;
+
+      @media screen and (min-width: 768px) {
+        font-size: 20px;
+        margin-top: 20px;
+      }
+      
+      @media screen and (min-width: 1280px) {
+        font-size: 22px;
+      }
+
+      
+    }
+
+    &__item {
+      text-align: center;
+      margin-top: 5px;
+      margin-bottom: 5px;
+
+      @media screen and (min-width: 768px) {
+        font-size: 16px;
+        margin-bottom: 15px;
+      }
+      
+      @media screen and (min-width: 1280px) {
+        font-size: 18px;
+      }
+    }
+
+    &__img-thumb {
+      margin: 0 auto;
+      border: 5px #FF6B08 solid;
+      box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.15);
+      border-radius: 100%;
+      width: 125px;
+      height: 125px;
+      overflow: hidden;
+
+      @media screen and (min-width: 768px) {
+        width: 200px;
+      height: 200px;
+      }
+
+      @media screen and (min-width: 1280px) {
+        width: 200px;
+        height: 200px;
+      }    
+    }
+
+    &__image {
+      width: auto;
+      height: 100%;
+      margin: 0 auto;      
     }
 }
+
+.slider__button {
+  position: relative;
+  outline: none;
+  border: none;
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+#next {
+  bottom: -7%;
+  right: -75%;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  @media screen and (min-width: 768px) {
+    bottom: -10%;
+    right: -90%;
+  }
+
+  @media screen and (min-width: 1280px) {
+    right: -92%;
+  } 
+
+  &:hover,
+  &:focus {
+    fill:#FF6B08;
+  }
+}
+
+#prev {
+  bottom: -7%;
+  left: 0;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  @media screen and (min-width: 768px) {
+    bottom: -10%;
+    right: -90%;
+  }
+
+  @media screen and (min-width: 1280px) {
+    right: -92%;
+  } 
+
+  &:hover,
+  &:focus {
+    fill:#FF6B08;
+    
+  }
+}
+
+

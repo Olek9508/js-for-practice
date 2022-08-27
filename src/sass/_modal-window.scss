@@ -145,12 +145,22 @@
     font-weight: 500;
     font-size: 12px;
     line-height: 1.33;
-}
-
-.modal-window__button-watched {
     border-color: var(--accent-color);
     background-color: var(--accent-color);
     color: var(--secondary-white-text-color);
+}
+
+// .modal-window__button-watched {
+//     border-color: var(--accent-color);
+//     background-color: var(--accent-color);
+//     color: var(--secondary-white-text-color);
+// }
+
+.modal-window__button-watched-chacked,
+.modal-window__button-queue-chacked{
+    color: var(--primary-text-color);
+    border-color: var(--primary-text-color);
+    background-color: var(--secondary-white-text-color);
 }
 
 .film_card {

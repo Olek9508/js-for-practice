@@ -134,7 +134,7 @@ function selectPage({target}, mod) {
                 getMovieByKeyword(keyword, currentPage - 1).then(({data}) => {
                     renderTrendingMovies(data.results)
                     currentPage-=1
-                    renderButtonsOfPagination(data)      
+                    renderButtonsOfPagination(data)
                 })
                 break
             default:

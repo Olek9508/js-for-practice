@@ -2,8 +2,7 @@
   "name": "parcel-project-template",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://MykolaySheremet.github.io/project--JS-09-group",
-  "scripts": {
+  "homepage": "https://MykolaySheremet.github.io/project--JS-09-group",  "scripts": {
     "start": "parcel src/*.html",
     "build": "parcel build src/*.html --public-url /project--JS-09-group/"
   },

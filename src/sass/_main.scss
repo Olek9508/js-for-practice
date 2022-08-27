@@ -22,18 +22,24 @@
 .film_card{
     width: 100%;
     margin-bottom: 20px;
+    border-radius: 10px;
 }
 
 .film_card__img{
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     width: 100%;
     overflow: hidden;
-    border-radius: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 .film_card__img--block{
     display: block;
     width: 100%;
+}
+
+.film_card__box {
+    padding: 7px;
 }
 
 .film_card__title{

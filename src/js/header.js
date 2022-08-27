@@ -18,6 +18,8 @@ function onLibraryClick() {
   HOME.classList.remove('current');
   BTNCONTAINER.classList.remove('unvisible');
   HEADERTHUMB.classList.remove('hidden');
+
+  
   
 }
 

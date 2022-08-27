@@ -5,6 +5,12 @@ import { addToQueueList } from './localeStorage'
 const closeBtn = document.querySelector(".modal-window__close-btn")
 const backdrop = document.querySelector(".modal-backdrop")
 const modalData = document.querySelector(".modal-window__container")
+let addToWatchedButtonText = "add to Watched"
+let addToQueueButtonText = "add to queue"
+let checkedAddToQueueBtnClass = ""
+let checkedAddToWathedBtnClass = ""
+
+
 
 function openMovieDetails(event) {
     let selectedFilm;
@@ -22,7 +28,8 @@ function openMovieDetails(event) {
     };
 
     openFilmModalWindow(selectedFilm.getAttribute("data-id"))
-
+    createWathedFilmsBtnName(selectedFilm.getAttribute("data-id"))
+    createQueueFilmsBtnName(selectedFilm.getAttribute("data-id"))
 }
 
 function buildFilmData(data) {
@@ -31,8 +38,8 @@ function buildFilmData(data) {
         modalData.insertAdjacentHTML('beforeend', renderFilmData(film.data))
         let addToWatchedButton = document.querySelector(".modal-window__button-watched")
         let addToQueueButton = document.querySelector(".modal-window__button-queue")
-        addToWatchedButton.addEventListener('click', () => addToWatchedList(data))
-        addToQueueButton.addEventListener('click', () => addToQueueList(data))
+        addToWatchedButton.addEventListener('click', () => addToWatchedList(data,addToWatchedButtonText,addToWatchedButton,checkedAddToWathedBtnClass))
+        addToQueueButton.addEventListener('click', () => addToQueueList(data,addToQueueButtonText,addToQueueButton,checkedAddToQueueBtnClass))
     })
     .catch('error')
 }
@@ -71,8 +78,8 @@ function renderFilmData(data) {
                 </div>
                 <h3 class="modal-window__info-header">About</h3>
                 <p class="modal-window__info-text">${overview}</p>
-                <button class="modal-window__button-watched">add to Watched</button>
-                <button class="modal-window__button-queue">add to queue</button>
+                <button class="modal-window__button-watched ${checkedAddToWathedBtnClass}">${addToWatchedButtonText}</button>
+                <button class="modal-window__button-queue ${checkedAddToQueueBtnClass}">${addToQueueButtonText}</button>
             </div>
     `
 }
@@ -105,5 +112,31 @@ if (e.key === 'Escape') {
 closeFilmModalWindow()
 }
 });
+
+function createWathedFilmsBtnName(id) {
+    let watchItemsArray = localStorage.getItem("watchedFilms") ? JSON.parse(localStorage.getItem("watchedFilms")) : []
+    if (watchItemsArray.includes(id)) {
+        addToWatchedButtonText = "remove to wathed"
+        checkedAddToWathedBtnClass = "modal-window__button-watched-chacked"
+        console.log("watched change")
+    }
+    else {
+        addToWatchedButtonText = "add to wathed"
+        checkedAddToWathedBtnClass = ""
+    }
+}
+
+function createQueueFilmsBtnName(id) {
+    let queueItemsArray = localStorage.getItem("queueFilms") ? JSON.parse(localStorage.getItem("queueFilms")) : []
+    if (queueItemsArray.includes(id)) {
+        addToQueueButtonText = "remove to queue"
+        checkedAddToQueueBtnClass = "modal-window__button-queue-chacked"
+        console.log("queue change")
+    }
+    else {
+        addToQueueButtonText = "add to queue"
+        checkedAddToQueueBtnClass = ""
+    }
+}
 
 export { openMovieDetails }

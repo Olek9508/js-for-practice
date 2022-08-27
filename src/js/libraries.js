@@ -1,55 +1,131 @@
-import defaultPoster from '../img/cinema320.jpg';
-import defaultPosterMob from '../img/cinema480.jpg';
-import defaultPosterTab from '../img/cinema768.jpg';
-import defaultPosterDesc from '../img/cinema1280.jpg';
-// import { getTrendingMovies } from './fetchFilms';
-// import { buildTrendingsMovies } from './renderTrendingMovies';
-// import { renderTrendingMovies } from './renderTrendingMovies';
+import defaultPoster from '../images/cinema320.jpg';
+import defaultPosterMob from '../images/cinema480.jpg';
+import defaultPosterTab from '../images/cinema768.jpg';
+import defaultPosterDesc from '../images/cinema1280.jpg';
 
+import { getMovieDetails } from "./fetchFilms"
+// import { findGenresNames } from './renderTrendingMovies'
+// import { renderTrendingMovies } from './renderTrendingMovies'
 
+// console.log(renderTrendingMovies);
 
-// import axios from "axios";
-// const KEY = '2acc48bc8101b89794229029120e4b70';
-// const BASE_URL = 'https://api.themoviedb.org/3/';
-
-// // console.log(buildTrendingsMovies);
-// // console.log(renderTrendingMovies);
-// // console.log(getTrendingMovies);
-
-// console.log(KEY);
-
-// const btnLibrary = document.querySelector('.link-library');
-// const btnHome = document.querySelector('#home');
 const divConatiner = document.querySelector('.container-library');
+const btnWached = document.querySelector('.library-first')
+const btnQueue = document.querySelector('.library-second')
+const gallery = document.querySelector('.films_list')
 
 
-// btnLibrary.addEventListener('click', checkcontains);
-// btnHome.addEventListener('click', renderNewTrendmovies);
+btnWached.addEventListener('click', renderWachedCards);
+btnQueue.addEventListener('click', renderQueue);
 
-let localstorag = [];
-
-// function renderNewTrendmovies() {
-//     clearContainIfLibrary();
-//     // divConatiner.innerHTML=`<ul class="films_list list flex"></ul>`
+function renderQueue() {
+    let localStorageQueue = localStorage.getItem('queueFilms')
     
-//     getTrendingMovies(1);
-//     buildTrendingsMovies();
-// }
+    if (localStorageQueue === null) {
 
-function checkContains(e) {
-    if (localstorag.length === 0) {
         clearContainIfLibrary();
         renderIfLibraryEmpty();
     }
+
+    else if (localStorageQueue.length > 0) {
+        gallery.innerHTML = '';
+        const arrayLocalQueueFilm = JSON.parse(localStorageQueue)
+    
+        for (const i of arrayLocalQueueFilm) {
+            const promisQueue = getMovieDetails(i);
+            promisQueue.then(
+
+                result => {
+                    
+                    const typeList = generateTypeMovies(result.data.genres);
+                    const year = new Date(result.data.release_date).getFullYear()
+                    const imageUrl = result.data.poster_path
+                        ? `https://image.tmdb.org/t/p/w500/${result.data.poster_path}`
+                        : `${result.data.defaultPoster}`;
+                    const cardwachfil = `
+                            <li class = "film_card" data-id="${i}">
+                            <div class="film_card__img">
+                            <img class="film_card__img--block"
+                            src=${imageUrl}
+                            alt="${result.data.original_title}">
+                            </div>
+                            <h3 class="film_card__title">${result.data.original_title}</h3>
+                            <p class="film_card__type">Привет</p>
+                            <p class="film_card__rating">Rating: ${result.data.vote_average}</p>
+                            </li>
+                            `
+            gallery.insertAdjacentHTML('beforeend', cardwachfil)
+                },
+
+                error => console.log(error)
+            );
+        }
+    
+    }
 }
 
-// function renderIfLibraryEmpty() {
-//     const rezult =
-//         `<img class="images-cinema" src="${defaultPoster}" alt="cinema">
-//         <p class="p-library"> Sorry, but you haven't added anything to your library yet </p>
-//         `
-//         divConatiner.insertAdjacentHTML('beforeend', rezult)
-// }
+function renderWachedCards() {
+    let localStorageWached = localStorage.getItem('watchedFilms')
+
+    if (localStorageWached === null) {
+        clearContainIfLibrary();
+        renderIfLibraryEmpty();
+    }
+
+    else if (localStorageWached.length > 0) {
+        gallery.innerHTML = '';
+        const arrayLocalWachFilm = JSON.parse(localStorageWached)
+
+        for (const i of arrayLocalWachFilm) {
+            const promis = getMovieDetails(i);
+            promis.then(
+                result => {
+                    const typeList = generateTypeMovies(result.data.genres);
+                    const year = new Date(result.data.release_date).getFullYear()
+                    const imageUrl = result.data.poster_path
+                        ? `https://image.tmdb.org/t/p/w500/${result.data.poster_path}`
+                        : `${result.data.defaultPoster}`;
+                    const cardwachfil = `
+                        <li class = "film_card" data-id="${i}">
+                        <div class="film_card__img">
+                        <img class="film_card__img--block"
+                        src=${imageUrl}
+                        alt="${result.data.original_title}">
+                        </div>
+                        <h3 class="film_card__title">${result.data.original_title}</h3>
+                        <p class="film_card__type">${typeList} | ${year}</p>
+                        <p class="film_card__rating">Rating: ${result.data.vote_average}</p>
+                        </li>
+                        `
+            gallery.insertAdjacentHTML('beforeend', cardwachfil)
+            },
+
+                        error => console.log(error)
+            );
+        } 
+    }
+}
+function generateTypeMovies(types) {
+    const typeFilms = [];
+
+    for (const type of types) {
+        typeFilms.push(type.name);
+    }
+
+    const typeAray = typeFilms.slice(0, 2)
+        
+        if (typeFilms.length > 2 || typeFilms.length === 0) {
+        typeAray.push('Others');
+    }
+        const typeFilmsStr = typeAray.join(', ');
+        
+        return typeAray;
+}
+
+function checkContains() {
+        clearContainIfLibrary();
+        renderIfLibraryEmpty();
+}
 
 function renderIfLibraryEmpty() {	
     let rezult = '';	

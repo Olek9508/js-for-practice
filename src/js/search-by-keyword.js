@@ -11,12 +11,12 @@ const input = document.querySelector('.search-input');
 searchValue.addEventListener('submit', onCustomSearch);
 console.log(input.value);
 
-// let formValue = null;
+let formValue = null;
 // let currentPage = 1;
 
 function onCustomSearch(event) {
   event.preventDefault();
-  const formValue = event.target.query.value.toLowerCase().trim();
+  formValue = input.value.toLowerCase().trim();
   console.log(formValue);
   if (!formValue) {
     galleryContainer.innerHTML = '';
@@ -33,5 +33,7 @@ function onCustomSearch(event) {
     return;
   }
 }
+
+console.log(input.value);
 
 export { onCustomSearch };

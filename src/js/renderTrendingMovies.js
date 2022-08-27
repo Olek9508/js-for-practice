@@ -33,12 +33,14 @@ try {
            <img class="film_card__img--block"
            src=${imageUrl}
            alt="${name}">
-           </div>
-           <h3 class="film_card__title">${name}</h3>
-           <p class="film_card__type">${genresList} | ${year}</p>
-           <p class="film_card__rating">Rating: ${vote}</p>
-     </li>
-     `
+        </div>
+        <div class="film_card__box">
+          <h3 class="film_card__title">${name}</h3>
+          <p class="film_card__type">${genresList} | ${year}</p>
+          <p class="film_card__rating">Rating: ${vote}</p>
+        </div>
+        </li>
+        `
       }
       )
       .join('')

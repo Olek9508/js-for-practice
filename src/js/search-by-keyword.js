@@ -1,23 +1,19 @@
 import { getMovieByKeyword } from './fetchFilms';
-import { openHomePage } from './open-home-page';
 import { renderTrendingMovies } from './renderTrendingMovies';
 import { renderButtonsOfPagination } from './pagination';
 
-const searchValue = document.querySelector('#search-query');
+const searchValue = document.querySelector('.submit-search');
 const galleryContainer = document.querySelector('.films_list');
-const input = document.querySelector('.search-input');
-// const films = film.data.results;
 
 searchValue.addEventListener('submit', onCustomSearch);
-console.log(input.value);
 
-let formValue = null;
-// let currentPage = 1;
+let currentPage = 1;
 
 function onCustomSearch(event) {
   event.preventDefault();
-  formValue = input.value.toLowerCase().trim();
+  const formValue = event.target.query.value.toLowerCase().trim();
   console.log(formValue);
+  preloaderAgain();
   if (!formValue) {
     galleryContainer.innerHTML = '';
     console.log('no result');
@@ -25,15 +21,14 @@ function onCustomSearch(event) {
   } else {
     galleryContainer.innerHTML = '';
     console.log('bad request');
-    getMovieByKeyword(formValue, 1).then(film => {
-      console.log(film.data);
-      renderTrendingMovies(film.data.results);
-      renderButtonsOfPagination(film.data, 1);
-    });
-    return;
+    getMovieByKeyword(formValue, currentPage)
+      .then(film => {
+        renderTrendingMovies(film.data.results);
+        renderButtonsOfPagination(film.data, 1);
+      })
+      .catch(error => console.log(error));
   }
+  return;
 }
-
-console.log(input.value);
 
 export { onCustomSearch };

@@ -2,20 +2,21 @@ import { getMovieByKeyword } from './fetchFilms';
 import { openHomePage } from './open-home-page';
 import { renderTrendingMovies } from './renderTrendingMovies';
 import { renderButtonsOfPagination } from './pagination';
-import { onHomeClick } from './header';
 
 const searchValue = document.querySelector('#search-query');
 const galleryContainer = document.querySelector('.films_list');
+const input = document.querySelector('.search-input');
 // const films = film.data.results;
 
 searchValue.addEventListener('submit', onCustomSearch);
+console.log(input.value);
 
-let formValue = null;
-let currentPage = 1;
+// let formValue = null;
+// let currentPage = 1;
 
 function onCustomSearch(event) {
   event.preventDefault();
-  formValue = event.target.querySearch.value.toLowerCase().trim();
+  const formValue = event.target.query.value.toLowerCase().trim();
   console.log(formValue);
   if (!formValue) {
     galleryContainer.innerHTML = '';
@@ -24,10 +25,10 @@ function onCustomSearch(event) {
   } else {
     galleryContainer.innerHTML = '';
     console.log('bad request');
-    getMovieByKeyword(formValue, currentPage).then(film => {
+    getMovieByKeyword(formValue, 1).then(film => {
+      console.log(film.data);
       renderTrendingMovies(film.data.results);
       renderButtonsOfPagination(film.data, 1);
-      onHomeClick();
     });
     return;
   }

@@ -1,17 +1,75 @@
+// const loaderPre = document.body
 
-const divPreloader = document.querySelector('.preloader');
-window.addEventListener('load', openAndHiddenLoader);
-
-function openAndHiddenLoader() {
-    divPreloader.classList.add('visually-hidden');
-  setTimeout(() => {
-    divPreloader.remove();
-  }, 1000);
-};
+// loaderPre.addEventListener('onload', preloaderFunction)
+// const preloader = document.getElementById('page_preloader');
 
 
-export { openAndHiddenLoader };
+// function preloaderFunction() {
+//    console.log('tru')
 
+//   setTimeout(function () {
+//     const preloader = document.getElementById('page_preloader');
+//     console.log(preloader);
+//     if (!preloader.classList.contains('done')) {
+//       preloader.classList.add('done')
+//     }
+    
+//   }, 1000);
+  
+// }
+preloaderAgain()
+
+function preloaderAgain() {
+  document.body.onload = function () {
+  
+  setTimeout(function () {
+    const preloader = document.getElementById('page_preloader');
+    console.log(preloader);
+    if (!preloader.classList.contains('done')) {
+      preloader.classList.add('done')
+    }
+    
+  }, 800);
+}
+}
+
+export{ preloaderAgain }
+
+// document.body.onload = function () {
+  
+//   setTimeout(function () {
+//     const preloader = document.getElementById('page_preloader');
+//     console.log(preloader);
+//     if (!preloader.classList.contains('done')) {
+//       preloader.classList.add('done')
+//     }
+    
+//   }, 1000);
+// }
+
+
+
+
+
+
+
+
+
+// єтот закомитил
+// const divPreloader = document.querySelector('.preloader');
+// window.addEventListener('load', openAndHiddenLoader);
+
+// function openAndHiddenLoader() {
+//     divPreloader.classList.add('visually-hidden');
+//   setTimeout(() => {
+//     divPreloader.remove();
+//   }, 1000);
+// };
+
+
+// export { openAndHiddenLoader };
+
+// тут бил тот счто с верху 
 
 
 

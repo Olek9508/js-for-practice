@@ -1,6 +1,7 @@
 import { getMovieDetails } from './fetchFilms'
 import { addToWatchedList } from './localeStorage'
 import { addToQueueList } from './localeStorage'
+import { checkLocaleStorageModalWindow } from './localeStorage'
 
 const closeBtn = document.querySelector(".modal-window__close-btn")
 const backdrop = document.querySelector(".modal-backdrop")
@@ -9,7 +10,6 @@ let addToWatchedButtonText = "add to Watched"
 let addToQueueButtonText = "add to queue"
 let checkedAddToQueueBtnClass = ""
 let checkedAddToWathedBtnClass = ""
-
 
 
 function openMovieDetails(event) {
@@ -27,9 +27,9 @@ function openMovieDetails(event) {
         selectedFilm = event.target;
     };
 
-    openFilmModalWindow(selectedFilm.getAttribute("data-id"))
     createWathedFilmsBtnName(selectedFilm.getAttribute("data-id"))
     createQueueFilmsBtnName(selectedFilm.getAttribute("data-id"))
+    openFilmModalWindow(selectedFilm.getAttribute("data-id"))
 }
 
 function buildFilmData(data) {
@@ -38,8 +38,9 @@ function buildFilmData(data) {
         modalData.insertAdjacentHTML('beforeend', renderFilmData(film.data))
         let addToWatchedButton = document.querySelector(".modal-window__button-watched")
         let addToQueueButton = document.querySelector(".modal-window__button-queue")
-        addToWatchedButton.addEventListener('click', () => addToWatchedList(data,addToWatchedButtonText,addToWatchedButton,checkedAddToWathedBtnClass))
-        addToQueueButton.addEventListener('click', () => addToQueueList(data,addToQueueButtonText,addToQueueButton,checkedAddToQueueBtnClass))
+
+        addToWatchedButton.addEventListener('click', () => addToWatchedList(film.data,addToWatchedButtonText,addToWatchedButton))
+        addToQueueButton.addEventListener('click', () => addToQueueList(film.data,addToQueueButtonText,addToQueueButton))
     })
     .catch('error')
 }
@@ -115,10 +116,16 @@ closeFilmModalWindow()
 
 function createWathedFilmsBtnName(id) {
     let watchItemsArray = localStorage.getItem("watchedFilms") ? JSON.parse(localStorage.getItem("watchedFilms")) : []
-    if (watchItemsArray.includes(id)) {
-        addToWatchedButtonText = "remove to wathed"
-        checkedAddToWathedBtnClass = "modal-window__button-watched-chacked"
-        console.log("watched change")
+    if (watchItemsArray.length > 0) {
+        console.log('length > 0')
+        if (checkLocaleStorageModalWindow(watchItemsArray, id)) {
+            addToWatchedButtonText = "remove from wathed"
+            checkedAddToWathedBtnClass = "modal-window__button-watched-chacked"
+            console.log("watched change")
+        }else {
+        addToWatchedButtonText = "add to wathed"
+        checkedAddToWathedBtnClass = ""
+    }
     }
     else {
         addToWatchedButtonText = "add to wathed"
@@ -128,10 +135,16 @@ function createWathedFilmsBtnName(id) {
 
 function createQueueFilmsBtnName(id) {
     let queueItemsArray = localStorage.getItem("queueFilms") ? JSON.parse(localStorage.getItem("queueFilms")) : []
-    if (queueItemsArray.includes(id)) {
-        addToQueueButtonText = "remove to queue"
-        checkedAddToQueueBtnClass = "modal-window__button-queue-chacked"
-        console.log("queue change")
+    if (queueItemsArray.length > 0) {
+        console.log('length > 0')
+        if (checkLocaleStorageModalWindow(queueItemsArray, id)) {
+            addToQueueButtonText = "remove from queue"
+            checkedAddToQueueBtnClass = "modal-window__button-queue-chacked"
+            console.log("queue change")
+        }else {
+        addToQueueButtonText = "add to queue"
+        checkedAddToQueueBtnClass = ""
+    }
     }
     else {
         addToQueueButtonText = "add to queue"

@@ -1,12 +1,13 @@
-import { getMovieGenres } from './fetchFilms';
+import { getMovieGenres } from './fetchFilms'
 
-const gallery = document.querySelector('.films_list');
+const gallery = document.querySelector('.films_list')
+
 
 async function renderTrendingMovies(filmsList) {
-  try {
-    const genres = await getMovieGenres();
+try {
+  const genres = await getMovieGenres()
     const markup = filmsList
-      .map(
+    .map(
         ({
           poster_path,
           original_title,
@@ -16,17 +17,17 @@ async function renderTrendingMovies(filmsList) {
           first_air_date,
           vote_average,
           id,
-        }) => {
-          const imageUrl = poster_path
+      }) => {
+            const imageUrl = poster_path
             ? `https://image.tmdb.org/t/p/w500/${poster_path}`
             : `${defaultPoster}`;
-
+  
           const date = release_date ? release_date : first_air_date;
           const year = new Date(date).getFullYear();
           const name = original_title ? original_title : original_name;
           const vote = vote_average ? vote_average.toFixed(1) : 'N/A';
-          const genresList = findGenresNames(genre_ids, genres.data.genres);
-          return `
+          const genresList = findGenresNames(genre_ids, genres.data.genres)
+        return `
         <li class = "film_card" data-id="${id}">
         <div class="film_card__img">
            <img class="film_card__img--block"
@@ -39,31 +40,35 @@ async function renderTrendingMovies(filmsList) {
           <p class="film_card__rating">Rating: ${vote}</p>
         </div>
         </li>
-        `;
-        }
+        `
+      }
       )
-      .join('');
+      .join('')
 
-    gallery.innerHTML = markup;
-  } catch (error) {
-    console.log(error);
-  }
+    gallery.innerHTML= markup
+} catch (error) {
+  console.log(error)
+}
 }
 
-function findGenresNames(genre_ids, data) {
+function findGenresNames(genre_ids, data){
   const filmGenres = [];
-  const genresList = data.map(({ id, name }) => {
-    if (genre_ids.includes(id)) {
-      filmGenres.push(name);
-    }
-  });
+  const genresList = data
+  .map(
+    ({id, name}) =>
+    {
+      if (genre_ids.includes(id)) {
+        filmGenres.push(name);
+      }
+    }  
+  )
 
-  const genreArr = filmGenres.slice(0, 2);
+  const genreArr = filmGenres.slice(0, 2)
   if (filmGenres.length > 2 || filmGenres.length === 0) {
     genreArr.push('Others');
   }
   const genreStr = genreArr.join(', ');
   return genreStr;
-}
+} 
 
 export { renderTrendingMovies };

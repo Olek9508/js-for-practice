@@ -3,168 +3,174 @@ import defaultPosterMob from '../images/cinema480.jpg';
 import defaultPosterTab from '../images/cinema768.jpg';
 import defaultPosterDesc from '../images/cinema1280.jpg';
 
-import { getMovieDetails } from "./fetchFilms"
-// import { findGenresNames } from './renderTrendingMovies'
-// import { renderTrendingMovies } from './renderTrendingMovies'
 
-// console.log(renderTrendingMovies);
+import { preloaderAgain } from '../js/preloader'
+
+import { getMovieDetails } from "./fetchFilms"
+
 
 const divConatiner = document.querySelector('.container-library');
+
 const btnWached = document.querySelector('.library-first')
 const btnQueue = document.querySelector('.library-second')
 const gallery = document.querySelector('.films_list')
+const preloader = document.getElementById('page_preloader')
+
+
 
 
 btnWached.addEventListener('click', renderWachedCards);
 btnQueue.addEventListener('click', renderQueue);
 
+
 function renderQueue() {
-    let localStorageQueue = localStorage.getItem('queueFilms')
+
+  let localStorageQueue = localStorage.getItem('queueFilms')
+
+  if (localStorageQueue === null) {
+
+    renderEmptyCardLibrary()
+    return
+  }
+
+  if (localStorageQueue.length === 2) {
+
+    renderEmptyCardLibrary
+    return;
+  } 
+
+  else if (localStorageQueue.length > 2) {
     
-    if (localStorageQueue === null) {
-
-        clearContainIfLibrary();
-        renderIfLibraryEmpty();
-    }
-
-    else if (localStorageQueue.length > 0) {
-        gallery.innerHTML = '';
-        const arrayLocalQueueFilm = JSON.parse(localStorageQueue)
+    preloaderfunction()
+        
+    gallery.innerHTML = '';
     
-        for (const i of arrayLocalQueueFilm) {
-            const promisQueue = getMovieDetails(i);
-            promisQueue.then(
+    const arrayLocalQueueFilm = JSON.parse(localStorageQueue);
 
-                result => {
-                    
-                    const typeList = generateTypeMovies(result.data.genres);
-                    const year = new Date(result.data.release_date).getFullYear()
-                    const imageUrl = result.data.poster_path
-                        ? `https://image.tmdb.org/t/p/w500/${result.data.poster_path}`
-                        : `${result.data.defaultPoster}`;
-                    const cardwachfil = `
-                            <li class = "film_card" data-id="${i}">
-                            <div class="film_card__img">
-                            <img class="film_card__img--block"
-                            src=${imageUrl}
-                            alt="${result.data.original_title}">
-                            </div>
-                            <h3 class="film_card__title">${result.data.original_title}</h3>
-                            <p class="film_card__type">Привет</p>
-                            <p class="film_card__rating">Rating: ${result.data.vote_average}</p>
-                            </li>
-                            `
-            gallery.insertAdjacentHTML('beforeend', cardwachfil)
-                },
-
-                error => console.log(error)
-            );
-        }
+    renderListWached(arrayLocalQueueFilm);
     
-    }
+  }
 }
 
 function renderWachedCards() {
-    let localStorageWached = localStorage.getItem('watchedFilms')
 
-    if (localStorageWached === null) {
-        clearContainIfLibrary();
-        renderIfLibraryEmpty();
-    }
+  let localStorageWached = localStorage.getItem('watchedFilms')
 
-    else if (localStorageWached.length > 0) {
-        gallery.innerHTML = '';
-        const arrayLocalWachFilm = JSON.parse(localStorageWached)
+  if (localStorageWached === null) {
+          
+    renderEmptyCardLibrary()
+    return;
+  }
 
-        for (const i of arrayLocalWachFilm) {
-            const promis = getMovieDetails(i);
-            promis.then(
-                result => {
-                    const typeList = generateTypeMovies(result.data.genres);
-                    const year = new Date(result.data.release_date).getFullYear()
-                    const imageUrl = result.data.poster_path
-                        ? `https://image.tmdb.org/t/p/w500/${result.data.poster_path}`
-                        : `${result.data.defaultPoster}`;
-                    const cardwachfil = `
-                        <li class = "film_card" data-id="${i}">
+  if (localStorageWached.length === 2) {
+
+    renderEmptyCardLibrary()
+    return;
+  }
+
+  else if (localStorageWached.length > 2) {
+
+    preloaderfunction()
+
+    gallery.innerHTML = '';
+    const arrayLocalWachFilm = JSON.parse(localStorageWached)
+
+    renderListWached(arrayLocalWachFilm);
+    
+  }
+}
+
+
+function preloaderfunction() {
+
+  if (preloader.classList.contains('done')) {
+            preloader.classList.remove('done')
+
+            setTimeout(function () {
+                if (!preloader.classList.contains('done')) {
+                preloader.classList.add('done')
+                }
+            }, 500);
+  }
+    
+}
+
+
+function renderListWached(arays) {
+  for (const aray of arays) {
+    
+    const imageUrl = aray.poster_path
+      ? `https://image.tmdb.org/t/p/w500/${aray.poster_path}`
+      : `${aray.defaultPoster}`;
+    const year = new Date(aray.release_date).getFullYear();
+    const typeList = generateTypeMovies(aray.genres);
+    const cardwachfil = `
+                        <li class = "film_card" data-id="${aray.i}">
                         <div class="film_card__img">
                         <img class="film_card__img--block"
                         src=${imageUrl}
-                        alt="${result.data.original_title}">
+                        alt="${aray.original_title}">
                         </div>
-                        <h3 class="film_card__title">${result.data.original_title}</h3>
+                        <h3 class="film_card__title">${aray.original_title}</h3>
                         <p class="film_card__type">${typeList} | ${year}</p>
-                        <p class="film_card__rating">Rating: ${result.data.vote_average}</p>
+                        <p class="film_card__rating">Rating: ${aray.vote_average}</p>
                         </li>
-                        `
-            gallery.insertAdjacentHTML('beforeend', cardwachfil)
-            },
-
-                        error => console.log(error)
-            );
-        } 
-    }
+                        `;
+    gallery.insertAdjacentHTML('beforeend', cardwachfil);
+  }
 }
+
+
 function generateTypeMovies(types) {
-    const typeFilms = [];
+  const typeFilms = [];
 
-    for (const type of types) {
-        typeFilms.push(type.name);
-    }
+  for (const type of types) {
+    typeFilms.push(type.name);
+  }
 
-    const typeAray = typeFilms.slice(0, 2)
-        
-        if (typeFilms.length > 2 || typeFilms.length === 0) {
-        typeAray.push('Others');
-    }
-        const typeFilmsStr = typeAray.join(', ');
-        
-        return typeAray;
+  const typeAray = typeFilms.slice(0, 2);
+
+  if (typeFilms.length > 2 || typeFilms.length === 0) {
+    typeAray.push('Others');
+  }
+  const typeFilmsStr = typeAray.join(', ');
+
+  return typeAray;
 }
 
-function checkContains() {
-        clearContainIfLibrary();
-        renderIfLibraryEmpty();
+function renderEmptyCardLibrary() {
+  clearContainIfLibraryEmpty();
+  renderDefaultLibrary();
 }
 
-function renderIfLibraryEmpty() {	
-    let rezult = '';	
-	
-    if (window.matchMedia("(min-width: 1280px)").matches) {	
-        rezult =	
-            `<img class="images-cinema" src="${defaultPosterDesc}" alt="cinema">	
-            <p class="p-library"> Sorry, but you haven't added anything to your library yet </p>`	
-    divConatiner.insertAdjacentHTML('beforeend', rezult)	
-    return;	
-    }
-    
-    else if (window.matchMedia("(min-width: 768px)").matches) {	
-        rezult =	
-            `<img class="images-cinema" src="${defaultPosterTab}" alt="cinema">	
-            <p class="p-library"> Sorry, but you haven't added anything to your library yet </p>`	
-    divConatiner.insertAdjacentHTML('beforeend', rezult)	
-    return;	
-    }
+function renderDefaultLibrary() {
+  let rezult = '';
 
-    else if (window.matchMedia("(min-width: 480px)").matches) {	
-        rezult =	
-            `<img class="images-cinema" src="${defaultPosterMob}" alt="cinema">	
-            <p class="p-library"> Sorry, but you haven't added anything to your library yet </p>`	
-    divConatiner.insertAdjacentHTML('beforeend', rezult)	
-    return;	
-    }	
-	
-    else if (window.matchMedia("(max-width: 479px)").matches) {	
-        rezult =	
-            `<img class="images-cinema" src="${defaultPoster}" alt="cinema">	
-            <p class="p-library"> Sorry, but you haven't added anything to your library yet </p>`	
-    divConatiner.insertAdjacentHTML('beforeend', rezult)	
-    return;	
-    }	
+  if (window.matchMedia('(min-width: 1280px)').matches) {
+    rezult = `<img class="images-cinema" src="${defaultPosterDesc}" alt="cinema">
+            <p class="p-library"> Sorry, but you haven't added anything to your library yet </p>`;
+    divConatiner.insertAdjacentHTML('beforeend', rezult);
+    return;
+  } else if (window.matchMedia('(min-width: 768px)').matches) {
+    rezult = `<img class="images-cinema" src="${defaultPosterTab}" alt="cinema">
+            <p class="p-library"> Sorry, but you haven't added anything to your library yet </p>`;
+    divConatiner.insertAdjacentHTML('beforeend', rezult);
+    return;
+  } else if (window.matchMedia('(min-width: 480px)').matches) {
+    rezult = `<img class="images-cinema" src="${defaultPosterMob}" alt="cinema">
+            <p class="p-library"> Sorry, but you haven't added anything to your library yet </p>`;
+    divConatiner.insertAdjacentHTML('beforeend', rezult);
+    return;
+  } else if (window.matchMedia('(max-width: 479px)').matches) {
+    rezult = `<img class="images-cinema" src="${defaultPoster}" alt="cinema">
+            <p class="p-library"> Sorry, but you haven't added anything to your library yet </p>`;
+    divConatiner.insertAdjacentHTML('beforeend', rezult);
+    return;
+  }
 }
 
-function clearContainIfLibrary() {
-    divConatiner.innerHTML = '';
+function clearContainIfLibraryEmpty() {
+  divConatiner.innerHTML = '';
 }
 
-export { checkContains }
+export {renderWachedCards };

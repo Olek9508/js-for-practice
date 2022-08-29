@@ -14,8 +14,12 @@
     --font-color: #ffffff;
 }
 
-main{
+body {
     background: var(--color-secondary); 
+}
+
+.footer{
+        background: var(--color-secondary);
 }
 
 // .toggle__container {
@@ -34,6 +38,11 @@ main{
 
 
 .toggle__container h3 {
+    color: var(--font-color);
+    font-family: sans-serif;
+}
+
+.toggle__container p {
     color: var(--font-color);
     font-family: sans-serif;
 }

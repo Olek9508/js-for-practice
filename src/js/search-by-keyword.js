@@ -1,6 +1,8 @@
 import { getMovieByKeyword } from './fetchFilms';
 import { renderTrendingMovies } from './renderTrendingMovies';
 import { renderButtonsOfPagination } from './pagination';
+import { onResponseCheck } from './oncheckresponse';
+import { preloaderAgain } from './preloader';
 
 const refs = {
   searchValue: document.querySelector('.submit-search'),
@@ -14,24 +16,31 @@ function generalSettings() {
   refs.galleryContainer.innerHTML = '';
 }
 
+let formValue = null;
+
 function onCustomSearch(event) {
   event.preventDefault();
-  const formValue = event.target.query.value.toLowerCase().trim();
+  formValue = event.target.query.value.toLowerCase().trim();
   if (!formValue) {
     generalSettings();
     console.log('no result');
     return;
   } else {
     generalSettings();
-    getMovieByKeyword(formValue, 1)
+    getMovieByKeyword(formValue)
+      .then(onResponseCheck)
       .then(film => {
-        renderTrendingMovies(film.data.results);
-        renderButtonsOfPagination(film.data, 1);
-        console.log(film.data);
+        renderButtonsOfPagination(film.data, 2);
       })
-      .catch(error => console.log(error));
+      .catch(error => error);
   }
   return;
 }
 
-export { onCustomSearch };
+export { onCustomSearch, renderTrendingMovies };
+
+// .then(film => {
+//       renderTrendingMovies(film.data.results);
+//       renderButtonsOfPagination(film.data, currentPage);
+//     })
+//     .catch(error => console.log(error));

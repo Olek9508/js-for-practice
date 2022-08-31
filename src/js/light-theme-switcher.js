@@ -28,4 +28,4 @@ function toggleTheme() {
   }
 })();
 
-export { toggleTheme }
+export { toggleTheme };

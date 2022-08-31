@@ -1,32 +1,328 @@
 <div class="backdrop is-hidden" data-modal>
     <div class="modal">
+        <div class="modal__footer">
         <button class="modal__btn" data-modal-close>
             <svg class="form__icon--close" width="30" height="30" viewBox="0 0 30 30" fill="none">
-                <use href="/src/images/icons.svg#close-cross"></use>
+                <use href="./images/icons.svg#close-cross"></use>
             </svg>
         </button>
+        </div>
+    <div id="scroll">
         
-        
+    <p class="modal__title">«Hateful eight»</p>
+    <div class="poster-thumb">
+    <picture>
+        <source srcset="./images/the-hateful-eight-poster.jpg 1x, ./images/the-hateful-eight-poster.jpg 2x" media="(min-width: 1200px)">
+        <source srcset="./images/the-hateful-eight-poster_tablet.jpg 1x, ./images/the-hateful-eight-poster_tablet.jpg 2x" media="(min-width: 768px)">
+        <source srcset="./images/the-hateful-eight-poster_mobile.jpg 1x, ./images/the-hateful-eight-poster_mobile.jpg 2x" media="(max-width: 767px)">
 
-        <div class="team glide">
-            <h2 class="team__title"> Our team </h2>
-            <div data-glide-el="track" class="glide__track">
-                <ul class="team__list list glide__slides"></ul>
+        <source srcset="./images/the-hateful-eight-poster.webp 1x, ./images/the-hateful-eight-poster.webp 2x" media="(min-width: 1200px)"
+        type="image/webp">
+        <source srcset="./images/the-hateful-eight-poster_tablet.webp 1x, ./images/the-hateful-eight-poster_tablet.webp 2x" media="(min-width: 768px)"
+        type="image/webp">
+        <source srcset="./images/the-hateful-eight-poster_mobile.webp 1x, ./images/the-hateful-eight-poster_mobile.webp 2x" media="(max-width: 767px)"
+        type="image/webp">
+        <img class="modal__poster" src="./images/the-hateful-eight-poster.jpg" alt="The Hateful eight poster">
+      </picture>
+    </div>
+    <p class="modal__cast">CAST</p>
+    <div class="modal__cast-container">
+
+        <div class="modal__cast-card">
+            <div class="card-thumb">
+                <picture>
+                    <source srcset="./images/samuel-l-jackson.jpg 1x, ./images/samuel-l-jackson.jpg 2x" media="(min-width: 1200px)">
+                    <source srcset="./images/samuel-l-jackson_tablet.jpg 1x, ./images/samuel-l-jackson_tablet.jpg 2x" media="(min-width: 768px)">
+                    <source srcset="./images/samuel-l-jackson_mobile.jpg 1x, ./images/samuel-l-jackson_mobile.jpg 2x" media="(max-width: 767px)">
+
+                    <source srcset="./images/samuel-l-jackson.webp 1x, ./images/samuel-l-jackson.webp 2x" media="(min-width: 1200px)"
+                    type="image/webp">
+                    <source srcset="./images/samuel-l-jackson_tablet.webp 1x, ./images/samuel-l-jackson_tablet.webp 2x" media="(min-width: 768px)"
+                    type="image/webp">
+                    <source srcset="./images/samuel-l-jackson_mobile.webp 1x, ./images/samuel-l-jackson_mobile.webp 2x" media="(max-width: 767px)"
+                    type="image/webp">
+                    <img src="./images/samuel-l-jackson.jpg" alt="Samuel L. Jackson" class="modal__cast-image">
+                  </picture>
             </div>
+            <p class="card-description">Team Lead</p>
+        </div>
 
-            <button aria-label="Previous"  class="slider__button" id="prev">
-                <svg class="slider__arrow-left" width="15" height="15">
-                    <use href="/src/images/icons.svg#arrow-left"></use>
-                </svg>
-            </button>
+        <div class="modal__cast-card">
+            <div class="card-thumb">
+                <picture>
+                    <source srcset="./images/sheremet-mykola.jpg 1x, ./images/sheremet-mykola.jpg 2x" media="(min-width: 1200px)">
+                    <source srcset="./images/sheremet-mykola_tablet.jpg 1x, ./images/sheremet-mykola_tablet.jpg 2x" media="(min-width: 768px)">
+                    <source srcset="./images/sheremet-mykola_mobile.jpg 1x, ./images/sheremet-mykola_mobile.jpg 2x" media="(max-width: 767px)">
 
-            <button aria-label="Next" class="slider__button" id="next">
-                <svg class="slider__arrow-right" width="15" height="15">
-                    <use href="/src/images/icons.svg#arrow-right"></use>
-                </svg>
-            </button>
-            <div role="tablist" class="dots"></div>
+                    <source srcset="./images/sheremet-mykola.webp 1x, ./images/sheremet-mykola.webp 2x" media="(min-width: 1200px)"
+                    type="image/webp">
+                    <source srcset="./images/sheremet-mykola_tablet.webp 1x, ./images/sheremet-mykola_tablet.webp 2x" media="(min-width: 768px)"
+                    type="image/webp">
+                    <source srcset="./images/sheremet-mykola_mobile.webp 1x, ./images/sheremet-mykola_mobile.webp 2x" media="(max-width: 767px)"
+                    type="image/webp">
+                    <img src="./images/sheremet-mykola.jpg" alt="Artem Vazovskin" class="modal__cast-image">
+                  </picture>
+            </div>
+            <p class="card-description">Artem Vazovskin</p>
+        </div>
+
+        <div class="modal__cast-card">
+            <div class="card-thumb">
+                <picture>
+                    <source srcset="./images/kurt-russell.jpg 1x, ./images/kurt-russell.jpg 2x" media="(min-width: 1200px)">
+                    <source srcset="./images/kurt-russell_tablet.jpg 1x, ./images/kurt-russell_tablet.jpg 2x" media="(min-width: 768px)">
+                    <source srcset="./images/kurt-russell_mobile.jpg 1x, ./images/kurt-russell_mobile.jpg 2x" media="(max-width: 767px)">
+
+                    <source srcset="./images/kurt-russell.webp 1x, ./images/kurt-russell.webp 2x" media="(min-width: 1200px)"
+                    type="image/webp">
+                    <source srcset="./images/kurt-russell_tablet.webp 1x, ./images/kurt-russell_tablet.webp 2x" media="(min-width: 768px)"
+                    type="image/webp">
+                    <source srcset="./images/kurt-russell_mobile.webp 1x, ./images/kurt-russell_mobile.webp 2x" media="(max-width: 767px)"
+                    type="image/webp">
+                    <img src="./images/kurt-russell.jpg" alt="Kurt Russell" class="modal__cast-image">
+                  </picture>
+            </div>
+            <p class="card-description">Scrum-master</p>
+        </div>
+
+        <div class="modal__cast-card">
+            <div class="card-thumb">
+                <picture>
+                    <source srcset="./images/oleksandr-volik.jpg 1x, ./images/oleksandr-volik.jpg 2x" media="(min-width: 1200px)">
+                    <source srcset="./images/oleksandr-volik_tablet.jpg 1x, ./images/oleksandr-volik_tablet.jpg 2x" media="(min-width: 768px)">
+                    <source srcset="./images/oleksandr-volik_mobile.jpg 1x, ./images/oleksandr-volik_mobile.jpg 2x" media="(max-width: 767px)">
+
+                    <source srcset="./images/oleksandr-volik.webp 1x, ./images/oleksandr-volik.webp 2x" media="(min-width: 1200px)"
+                    type="image/webp">
+                    <source srcset="./images/oleksandr-volik_tablet.webp 1x, ./images/oleksandr-volik_tablet.webp 2x" media="(min-width: 768px)"
+                    type="image/webp">
+                    <source srcset="./images/oleksandr-volik_mobile.webp 1x, ./images/oleksandr-volik_mobile.webp 2x" media="(max-width: 767px)"
+                    type="image/webp">
+                    <img src="./images/oleksandr-volik.jpg" alt="Oleksandr Volik" class="modal__cast-image">
+                  </picture>
+            </div>
+            <p class="card-description">Oleksandr Volik</p>
+        </div>
+
+        <div class="modal__cast-card">
+            <div class="card-thumb">
+                <picture>
+                    <source srcset="./images/walton-goggins.jpg 1x, ./images/walton-goggins.jpg 2x" media="(min-width: 1200px)">
+                    <source srcset="./images/walton-goggins_tablet.jpg 1x, ./images/walton-goggins_tablet.jpg 2x" media="(min-width: 768px)">
+                    <source srcset="./images/walton-goggins_mobile.jpg 1x, ./images/walton-goggins_mobile.jpg 2x" media="(max-width: 767px)">
+
+                    <source srcset="./images/walton-goggins.webp 1x, ./images/walton-goggins.webp 2x" media="(min-width: 1200px)"
+                    type="image/webp">
+                    <source srcset="./images/walton-goggins_tablet.webp 1x, ./images/walton-goggins_tablet.webp 2x" media="(min-width: 768px)"
+                    type="image/webp">
+                    <source srcset="./images/walton-goggins_mobile.webp 1x, ./images/walton-goggins_mobile.webp 2x" media="(max-width: 767px)"
+                    type="image/webp">
+                    <img src="./images/walton-goggins.jpg" alt="Walton Goggins" class="modal__cast-image">
+                  </picture>
+            </div>
+            <p class="card-description">Developer</p>
+        </div>
+
+        <div class="modal__cast-card">
+            <div class="card-thumb">
+                <picture>
+                    <source srcset="./images/lisnyi-serhii.jpg 1x, ./images/lisnyi-serhii.jpg 2x" media="(min-width: 1200px)">
+                    <source srcset="./images/lisnyi-serhii_tablet.jpg 1x, ./images/lisnyi-serhii_tablet.jpg 2x" media="(min-width: 768px)">
+                    <source srcset="./images/lisnyi-serhii_mobile.jpg 1x, ./images/lisnyi-serhii_mobile.jpg 2x" media="(max-width: 767px)">
+
+                    <source srcset="./images/lisnyi-serhii.webp 1x, ./images/lisnyi-serhii.webp 2x" media="(min-width: 1200px)"
+                    type="image/webp">
+                    <source srcset="./images/lisnyi-serhii_tablet.webp 1x, ./images/lisnyi-serhii_tablet.webp 2x" media="(min-width: 768px)"
+                    type="image/webp">
+                    <source srcset="./images/lisnyi-serhii_mobile.webp 1x, ./images/lisnyi-serhii_mobile.webp 2x" media="(max-width: 767px)"
+                    type="image/webp">
+                    <img src="./images/lisnyi-serhii.jpg" alt="Lisnyi Serhii" class="modal__cast-image">
+                  </picture>
+            </div>
+            <p class="card-description">Lisnyi Serhii</p>
+        </div>
+
+       <div class="modal__cast-card">
+            <div class="card-thumb">
+                <picture>
+                    <source srcset="./images/jennifer-jason-leigh.jpg 1x, ./images/jennifer-jason-leigh.jpg 2x" media="(min-width: 1200px)">
+                    <source srcset="./images/jennifer-jason-leigh_tablet.jpg 1x, ./images/jennifer-jason-leigh_tablet.jpg 2x" media="(min-width: 768px)">
+                    <source srcset="./images/jennifer-jason-leigh_mobile.jpg 1x, ./images/jennifer-jason-leigh_mobile.jpg 2x" media="(max-width: 767px)">
+
+                    <source srcset="./images/jennifer-jason-leigh.webp 1x, ./images/jennifer-jason-leigh.webp 2x" media="(min-width: 1200px)"
+                    type="image/webp">
+                    <source srcset="./images/jennifer-jason-leigh_tablet.webp 1x, ./images/jennifer-jason-leigh_tablet.webp 2x" media="(min-width: 768px)"
+                    type="image/webp">
+                    <source srcset="./images/jennifer-jason-leigh_mobile.webp 1x, ./images/jennifer-jason-leigh_mobile.webp 2x" media="(max-width: 767px)"
+                    type="image/webp">
+                    <img src="./images/jennifer-jason-leigh.jpg" alt="Jennifer Jason Leigh" class="modal__cast-image">
+                  </picture>
+            </div>
+            <p class="card-description">Developer</p>
+        </div>
+
+        <div class="modal__cast-card">
+            <div class="card-thumb">
+                <picture>
+                    <source srcset="./images/bulakh-victoria.jpg 1x, ./images/bulakh-victoria.jpg 2x" media="(min-width: 1200px)">
+                    <source srcset="./images/bulakh-victoria_tablet.jpg 1x, ./images/bulakh-victoria_tablet.jpg 2x" media="(min-width: 768px)">
+                    <source srcset="./images/bulakh-victoria_mobile.jpg 1x, ./images/bulakh-victoria_mobile.jpg 2x" media="(max-width: 767px)">
+
+                    <source srcset="./images/bulakh-victoria.webp 1x, ./images/bulakh-victoria.webp 2x" media="(min-width: 1200px)"
+                    type="image/webp">
+                    <source srcset="./images/bulakh-victoria_tablet.webp 1x, ./images/bulakh-victoria_tablet.webp 2x" media="(min-width: 768px)"
+                    type="image/webp">
+                    <source srcset="./images/bulakh-victoria_mobile.webp 1x, ./images/bulakh-victoria_mobile.webp 2x" media="(max-width: 767px)"
+                    type="image/webp">
+                    <img src="./images/bulakh-victoria.jpg" alt="Victoria Bulakh" class="modal__cast-image">
+                  </picture>
+            </div>
+            <p class="card-description">Victoria Bulakh</p>
+        </div>
+
+         <div class="modal__cast-card">
+            <div class="card-thumb">
+                <picture>
+                    <source srcset="./images/demian-bichir.jpg 1x, ./images/demian-bichir.jpg 2x" media="(min-width: 1200px)">
+                    <source srcset="./images/demian-bichir_tablet.jpg 1x, ./images/demian-bichir_tablet.jpg 2x" media="(min-width: 768px)">
+                    <source srcset="./images/demian-bichir_mobile.jpg 1x, ./images/demian-bichir_mobile.jpg 2x" media="(max-width: 767px)">
+
+                    <source srcset="./images/demian-bichir.webp 1x, ./images/demian-bichir.webp 2x" media="(min-width: 1200px)"
+                    type="image/webp">
+                    <source srcset="./images/demian-bichir_tablet.webp 1x, ./images/demian-bichir_tablet.webp 2x" media="(min-width: 768px)"
+                    type="image/webp">
+                    <source srcset="./images/demian-bichir_mobile.webp 1x, ./images/demian-bichir_mobile.webp 2x" media="(max-width: 767px)"
+                    type="image/webp">
+                    <img src="./images/demian-bichir.jpg" alt="Demian Bichir" class="modal__cast-image">
+                  </picture>
+            </div>
+            <p class="card-description">Developer</p>
+        </div>
+
+        <div class="modal__cast-card">
+            <div class="card-thumb">
+                <picture>
+                    <source srcset="./images/nikolai-pustylnyi.jpg 1x, ./images/nikolai-pustylnyi.jpg 2x" media="(min-width: 1200px)">
+                    <source srcset="./images/nikolai-pustylnyi_tablet.jpg 1x, ./images/nikolai-pustylnyi_tablet.jpg 2x" media="(min-width: 768px)">
+                    <source srcset="./images/nikolai-pustylnyi_mobile.jpg 1x, ./images/nikolai-pustylnyi_mobile.jpg 2x" media="(max-width: 767px)">
+
+                    <source srcset="./images/nikolai-pustylnyi.webp 1x, ./images/nikolai-pustylnyi.webp 2x" media="(min-width: 1200px)"
+                    type="image/webp">
+                    <source srcset="./images/nikolai-pustylnyi_tablet.webp 1x, ./images/nikolai-pustylnyi_tablet.webp 2x" media="(min-width: 768px)"
+                    type="image/webp">
+                    <source srcset="./images/nikolai-pustylnyi_mobile.webp 1x, ./images/nikolai-pustylnyi_mobile.webp 2x" media="(max-width: 767px)"
+                    type="image/webp">
+                    <img src="./images/nikolai-pustylnyi.jpg" alt="Nikolai Pustylnyi" class="modal__cast-image">
+                  </picture>
+            </div>
+            <p class="card-description">Nikolai Pustylnyi</p>
+        </div>
+
+          <div class="modal__cast-card">
+            <div class="card-thumb">
+                <picture>
+                    <source srcset="./images/tim-roth.jpg 1x, ./images/tim-roth.jpg 2x" media="(min-width: 1200px)">
+                    <source srcset="./images/tim-roth_tablet.jpg 1x, ./images/tim-roth_tablet.jpg 2x" media="(min-width: 768px)">
+                    <source srcset="./images/tim-roth_mobile.jpg 1x, ./images/tim-roth_mobile.jpg 2x" media="(max-width: 767px)">
+
+                    <source srcset="./images/tim-roth.webp 1x, ./images/tim-roth.webp 2x" media="(min-width: 1200px)"
+                    type="image/webp">
+                    <source srcset="./images/tim-roth_tablet.webp 1x, ./images/tim-roth_tablet.webp 2x" media="(min-width: 768px)"
+                    type="image/webp">
+                    <source srcset="./images/tim-roth_mobile.webp 1x, ./images/tim-roth_mobile.webp 2x" media="(max-width: 767px)"
+                    type="image/webp">
+                    <img src="./images/tim-roth.jpg" alt="Tim Roth" class="modal__cast-image">
+                  </picture>
+            </div>
+            <p class="card-description">Developer</p>
+        </div>
+
+        <div class="modal__cast-card">
+            <div class="card-thumb">
+                <picture>
+                    <source srcset="./images/serhii-isaev.jpg 1x, ./images/serhii-isaev.jpg 2x" media="(min-width: 1200px)">
+                    <source srcset="./images/serhii-isaev_tablet.jpg 1x, ./images/serhii-isaev_tablet.jpg 2x" media="(min-width: 768px)">
+                    <source srcset="./images/serhii-isaev_mobile.jpg 1x, ./images/serhii-isaev_mobile.jpg 2x" media="(max-width: 767px)">
+
+                    <source srcset="./images/serhii-isaev.webp 1x, ./images/serhii-isaev.webp 2x" media="(min-width: 1200px)"
+                    type="image/webp">
+                    <source srcset="./images/serhii-isaev_tablet.webp 1x, ./images/serhii-isaev_tablet.webp 2x" media="(min-width: 768px)"
+                    type="image/webp">
+                    <source srcset="./images/serhii-isaev_mobile.webp 1x, ./images/serhii-isaev_mobile.webp 2x" media="(max-width: 767px)"
+                    type="image/webp">
+                    <img src="./images/serhii-isaev.jpg" alt="Serhii Isaev" class="modal__cast-image">
+                  </picture>
+            </div>
+            <p class="card-description">Serhii Isaev</p>
+        </div>
+
+         <div class="modal__cast-card">
+            <div class="card-thumb">
+                <picture>
+                    <source srcset="./images/michael-madsen.jpg 1x, ./images/michael-madsen.jpg 2x" media="(min-width: 1200px)">
+                    <source srcset="./images/michael-madsen_tablet.jpg 1x, ./images/michael-madsen_tablet.jpg 2x" media="(min-width: 768px)">
+                    <source srcset="./images/michael-madsen_mobile.jpg 1x, ./images/michael-madsen_mobile.jpg 2x" media="(max-width: 767px)">
+
+                    <source srcset="./images/michael-madsen.webp 1x, ./images/michael-madsen.webp 2x" media="(min-width: 1200px)"
+                    type="image/webp">
+                    <source srcset="./images/michael-madsen_tablet.webp 1x, ./images/michael-madsen_tablet.webp 2x" media="(min-width: 768px)"
+                    type="image/webp">
+                    <source srcset="./images/michael-madsen_mobile.webp 1x, ./images/michael-madsen_mobile.webp 2x" media="(max-width: 767px)"
+                    type="image/webp">
+                    <img src="./images/michael-madsen.jpg" alt="Michael Madsen" class="modal__cast-image">
+                  </picture>
+            </div>
+            <p class="card-description">Developer</p>
+        </div>
+
+        <div class="modal__cast-card">
+            <div class="card-thumb">
+                <picture>
+                    <source srcset="./images/chaialo-kyryll.jpg 1x, ./images/chaialo-kyryll.jpg 2x" media="(min-width: 1200px)">
+                    <source srcset="./images/chaialo-kyryll_tablet.jpg 1x, ./images/chaialo-kyryll_tablet.jpg 2x" media="(min-width: 768px)">
+                    <source srcset="./images/chaialo-kyryll_mobile.jpg 1x, ./images/chaialo-kyryll_mobile.jpg 2x" media="(max-width: 767px)">
+
+                    <source srcset="./images/chaialo-kyryll.webp 1x, ./images/chaialo-kyryll.webp 2x" media="(min-width: 1200px)"
+                    type="image/webp">
+                    <source srcset="./images/chaialo-kyryll_tablet.webp 1x, ./images/chaialo-kyryll_tablet.webp 2x" media="(min-width: 768px)"
+                    type="image/webp">
+                    <source srcset="./images/chaialo-kyryll_mobile.webp 1x, ./images/chaialo-kyryll_mobile.webp 2x" media="(max-width: 767px)"
+                    type="image/webp">
+                    <img src="./images/chaialo-kyryll.jpg" alt="Chaialo Kyryll" class="modal__cast-image">
+                  </picture>
+            </div>
+            <p class="card-description">Chaialo Kyryll</p>
         </div>
         
+        <div class="modal__cast-card">
+            <div class="card-thumb"><picture>
+                <source srcset="./images/bruce-dern.jpg 1x, ./images/bruce-dern.jpg 2x" media="(min-width: 1200px)">
+                <source srcset="./images/bruce-dern_tablet.jpg 1x, ./images/bruce-dern_tablet.jpg 2x" media="(min-width: 768px)">
+                <source srcset="./images/bruce-dern_mobile.jpg 1x, ./images/bruce-dern_mobile.jpg 2x" media="(max-width: 767px)">
+
+                <source srcset="./images/bruce-dern.webp 1x, ./images/bruce-dern.webp 2x" media="(min-width: 1200px)"
+                type="image/webp">
+                <source srcset="./images/bruce-dern_tablet.webp 1x, ./images/bruce-dern_tablet.webp 2x" media="(min-width: 768px)"
+                type="image/webp">
+                <source srcset="./images/bruce-dern_mobile.webp 1x, ./images/bruce-dern_mobile.webp 2x" media="(max-width: 767px)"
+                type="image/webp">
+                <img src="./images/bruce-dern.jpg" alt="Bruce Dern" class="modal__cast-image">
+              </picture>
+            </div>
+            <p class="card-description">Developer</p>
+        </div>
+
+        <!-- <div class="modal__cast-card">
+            <picture>
+                <source srcset="./images/.jpg 1x, ./images/.jpg 2x" media="(min-width: 1200px)">
+                <source srcset="./images/_tablet.jpg 1x, ./images/_tablet.jpg 2x" media="(min-width: 768px)">
+                <source srcset="./images/_mobile.jpg 1x, ./images/_mobile.jpg 2x" media="(max-width: 767px)">
+                <img src="./images/.jpg" alt="Artem Kureninov" class="modal__cast-image">
+              </picture>
+            <p class="card-description">Artem Kureninov</p>
+        </div> -->
+
+        </div>
     </div>
+</div>
   </div>

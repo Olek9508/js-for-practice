@@ -13,8 +13,6 @@
     flex-wrap: wrap;
     box-sizing: border-box;
     margin: 0;
-    margin-top: 20px;
-    margin-bottom: 60px;
 }
 
 
@@ -64,10 +62,10 @@ color: var(--accent-color);
     color: var(--accent-color);
     }
 
+
+
+
 @media screen and (min-width: 768px){
-    .films_list{
-        margin-top: 60px;
-    }
     .film_card{
         width: calc((100% - 32px)/2);
         margin-right: 32px;

@@ -23,7 +23,4 @@ async function getMovieGenres () {
     return response
 }
 
-export { getTrendingMovies }
-export { getMovieByKeyword }
-export { getMovieDetails }
-export { getMovieGenres }
+export { getTrendingMovies, getMovieByKeyword, getMovieDetails, getMovieGenres }

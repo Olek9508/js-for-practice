@@ -8,76 +8,70 @@
 
     opacity: 1;
     transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
 
-.backdrop {
     &.is-hidden {
         opacity: 0;
         pointer-events: none;
-
-        .modal {
-            transform: translate(-50%, -50%) scale(0.9);
-        }
     }
+    
 }
 
 .modal {
-    z-index: 1;
-    position: absolute;
+    z-index: 2;
+    position: relative;
     top: 50%;
     left: 50%;
+    text-align: center;
     background-color: #ffffff;
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
         0px 2px 1px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
 
     transform: translate(-50%, -50%) scale(1);
-
     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
     @media screen and (min-width: 320px) {
         width: 280px;
         height: 500px;
-        padding: 8px 8px 280px 280px;
+        padding: 40px 20px 20px;
     }
     
     @media screen and (min-width: 768px) {
         width: 700px;
         height: 552px;
-        padding: 8px 8px 543px 490px;
     }
 
     @media screen and (min-width: 1280px) {
       width: 806px;
       height: 558px;
-      padding: 8px 8px 543px 490px;
-  }
+   }
 
+    .backdrop.is-hidden & {
+        transform: translate(-50%, -50%) scale(0.9);
+    }
+}
+
+#scroll {
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.modal__footer {
+    position: fixed;
+    top: 8px;
+    right: 8px;
 }
 
 .modal__btn {
-
-    position: relative;
-    top: 0;
-    right: 30px;
-    display: block;
+    padding: 0;
     z-index: 2;
     width: 25px;
     height: 25px;
     border: none;
     box-sizing: border-box;
     border-radius: 100%;
-    cursor: pointer;
-
-    @media screen and (min-width: 768px) {
-    right: -85%;
-    }
-
-    @media screen and (min-width: 1280px) {
-    top: 0;
-    right: -90%;
-  }
 }
+
 .form__icon--close {
     fill: #000000;
     display: block;
@@ -85,9 +79,74 @@
     height: 25px;
     transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
    
-    
     &:hover,
     &:focus {
         fill: var(--accent-color);
     }
+}
+
+.modal__title {
+    font-size: 30px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-top: 10px;
+    margin-bottom: 20px;
+
+    @media screen and (min-width: 768px) {
+        margin-top: 0px;
+     }
+}
+
+.modal__poster {
+    width: 95%;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.modal__cast {
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.modal__cast-container {
+
+    display: block;
+
+    @media screen and (min-width: 768px) {
+        display: flex;
+        flex-wrap: wrap;
+     }
+}
+
+.modal__cast-card {
+    width: 50%;
+}
+
+.modal__cast-image {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    
+}
+
+.card-thumb {
+    text-align: center;
+    width: 240px;
+    height: 240px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 10%;
+
+    @media screen and (min-width: 768px) {
+        width: 280px;
+        height: 280px;
+    }
+}
+
+
+.card-description {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 14px;
 }

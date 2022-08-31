@@ -1,46 +1,48 @@
 import { getMovieByKeyword } from './fetchFilms';
 import { renderTrendingMovies } from './renderTrendingMovies';
-import { renderButtonsOfPagination } from './pagination';
-import { onResponseCheck } from './oncheckresponse';
-import { preloaderAgain } from './preloader';
+import {
+  renderButtonsOfPagination,
+  selectPageKeyWord,
+  removeEventListenersOnPaginationButtons,
+} from './pagination';
 
-const refs = {
-  searchValue: document.querySelector('.submit-search'),
-  galleryContainer: document.querySelector('.films_list'),
-};
+const paginationButtons = document.querySelector('.pagination-nav');
+const galleryContainer = document.querySelector('.films_list');
+const errorText = document.querySelector('.error-paragraph');
+const successText = document.querySelector('.success-paragraph');
+const paginationContainer = document.querySelector('.container_pagination');
 
-refs.searchValue.addEventListener('submit', onCustomSearch);
+let keyword = '';
 
-function generalSettings() {
-  refs.searchValue.reset();
-  refs.galleryContainer.innerHTML = '';
+function getInputValue({ target }) {
+  keyword = target.value;
+  getMovieByKeyword(keyword)
+    .then(({ data }) => {
+      if (data.results.length === 0) {
+        onShowError();
+        galleryContainer.innerHTML = '';
+        paginationContainer.innerHTML = '';
+        successText.classList.remove('hide-success');
+        return;
+      }
+      onShowSuccess();
+      errorText.classList.add('hide-error');
+      removeEventListenersOnPaginationButtons();
+      paginationButtons.addEventListener('click', selectPageKeyWord);
+      renderTrendingMovies(data.results);
+      renderButtonsOfPagination(data.total_pages, 1);
+    })
+    .catch(error => console.log(error));
 }
 
-let formValue = null;
-
-function onCustomSearch(event) {
-  event.preventDefault();
-  formValue = event.target.query.value.toLowerCase().trim();
-  if (!formValue) {
-    generalSettings();
-    console.log('no result');
-    return;
-  } else {
-    generalSettings();
-    getMovieByKeyword(formValue)
-      .then(onResponseCheck)
-      .then(film => {
-        renderButtonsOfPagination(film.data, 2);
-      })
-      .catch(error => error);
-  }
-  return;
+function onShowError() {
+  errorText.classList.remove('hide-error');
+  console.log('Search result not successful. Enter the correct movie name');
 }
 
-export { onCustomSearch, renderTrendingMovies };
+function onShowSuccess() {
+  successText.classList.add('hide-success');
+  console.log('Search result not successful. Enter the correct movie name');
+}
 
-// .then(film => {
-//       renderTrendingMovies(film.data.results);
-//       renderButtonsOfPagination(film.data, currentPage);
-//     })
-//     .catch(error => console.log(error));
+export { keyword, getInputValue, onShowError, onShowSuccess };

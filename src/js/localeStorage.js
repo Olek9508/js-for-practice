@@ -31,7 +31,6 @@ function addToWatchedList({ poster_path,
     id }, addToWatchedButtonText, addToWatchedButton) {
     watchItemsArray = localStorage.getItem("watchedFilms") ? JSON.parse(localStorage.getItem("watchedFilms")) : []
     localStorage.removeItem("watchedFilms")
-
     const watchedFilmsItem = new localeStorageItem(poster_path,
         original_title,
         original_name,
@@ -45,18 +44,18 @@ function addToWatchedList({ poster_path,
         if (checkLocaleStorage(watchItemsArray, id)) {
             addToWatchedButton.textContent = "add to wathed"
             addToWatchedButtonText = "add to wathed"
-            addToWatchedButton.classList.remove("modal-window__button-watched-chacked")
+            addToWatchedButton.classList.remove("modal-window__button-watched-checked")
         }else {
             watchItemsArray.push(watchedFilmsItem)
             addToWatchedButton.textContent = "remove from wathed"
             addToWatchedButtonText = "remove from wathed"
-            addToWatchedButton.classList.add("modal-window__button-watched-chacked")
+            addToWatchedButton.classList.add("modal-window__button-watched-checked")
         }
     } else {
         watchItemsArray.push(watchedFilmsItem)
         addToWatchedButton.textContent = "remove from wathed"
         addToWatchedButtonText = "remove from wathed"
-        addToWatchedButton.classList.add("modal-window__button-watched-chacked")
+        addToWatchedButton.classList.add("modal-window__button-watched-checked")
     }
 
     localStorage.setItem("watchedFilms", JSON.stringify(watchItemsArray))
@@ -65,7 +64,6 @@ function addToWatchedList({ poster_path,
 
 function checkLocaleStorage(array, id) {
     let flag = false
-    
     for (let i = 0; i < array.length; i += 1) {
         if (array[i].id === id) {
             array.splice(i, 1);
@@ -79,7 +77,6 @@ function checkLocaleStorage(array, id) {
 
 function checkLocaleStorageModalWindow(array, id) {
     let flag = false
-
     for (let i = 0; i < array.length; i += 1) {
         if (array[i].id === Number(id)) {
             return flag = true;
@@ -114,23 +111,21 @@ function addToQueueList({ poster_path,
         if (checkLocaleStorage(queueItemsArray, id)) {
             addToQueueButton.textContent = "add to queue"
             addToQueueButtonText = "add to queue"
-            addToQueueButton.classList.remove("modal-window__button-queue-chacked")
+            addToQueueButton.classList.remove("modal-window__button-queue-checked")
         }else {
             queueItemsArray.push(queueFilmsItem)
             addToQueueButton.textContent = "remove from queue"
             addToQueueButtonText = "remove from queue"
-            addToQueueButton.classList.add("modal-window__button-queue-chacked")
+            addToQueueButton.classList.add("modal-window__button-queue-checked")
         }
     } else {
         queueItemsArray.push(queueFilmsItem)
         addToQueueButton.textContent = "remove from queue"
         addToQueueButtonText = "remove from queue"
-        addToQueueButton.classList.add("modal-window__button-queue-chacked")
+        addToQueueButton.classList.add("modal-window__button-queue-checked")
     }
     
     localStorage.setItem("queueFilms", JSON.stringify(queueItemsArray))
 }
 
-export { addToWatchedList }
-export { addToQueueList }
-export { checkLocaleStorageModalWindow }
+export { addToWatchedList, addToQueueList, checkLocaleStorageModalWindow}

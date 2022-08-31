@@ -8,11 +8,15 @@ let currentPage = 1
 
 function renderButtonsOfPagination(total_pages, page) {
     currentPage = page || currentPage
+    if (!paginationButtons.classList.contains("container_pagination")) {
+        paginationButtons.classList.add("container_pagination")
+    }
     window.scrollTo(0, 0)
     let markup = ""
     switch (total_pages) {
         case 1:
             paginationButtons.innerHTML = markup
+            paginationButtons.classList.remove("container_pagination")
             removeEventListenersOnPaginationButtons()
             break
         case 2:

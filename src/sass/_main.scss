@@ -24,11 +24,10 @@
 }
 
 .film_card__img{
+    display: block;
     margin-bottom: 5px;
-    width: 100%;
     overflow: hidden;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    border-radius: 10px;
 }
 
 .film_card__img--block{
@@ -77,6 +76,8 @@ color: var(--accent-color);
 
     .film_card__img{
         margin-bottom: 8px;
+        width: 336px;
+        height: 455px;
     }
 
     .film_card__title{
@@ -107,6 +108,8 @@ color: var(--accent-color);
 
     .film_card__img{
         margin-bottom: 12px;
+        width: 394px;
+        height: 574px;
     }
 
     .film_card__title{
@@ -123,40 +126,48 @@ color: var(--accent-color);
 // добавив деякі єфффекти на карточку при ховері та фокусу 
 
 .film_card {
-    transition: 800ms;
+    transform: scale(1);
+    transition: box-shadow 100ms linear, transform 250ms linear;
 
 }
 
-.film_card:hover {
-
-    transform: scale(1.05);
-    box-shadow: 2px 0px 86px -2px rgba(255, 107, 8, 0.43);
-    -webkit-box-shadow: 2px -1px 86px -2px rgba(255, 107, 8, 0.43);
-    -moz-box-shadow: 2px -1px 86px -2px rgba(255, 107, 8, 0.43);
-
-    .film_card__title{
-        animation-name: cardimage;
-        animation-duration: 500ms;
-        animation-iteration-count: infinite;
-    }
+.film_card:hover,
+.film.card:focus {
+    
+    transform: scale(1.02);
+    box-shadow: 2px 0px 12px -2px rgba(255, 107, 8, 0.43);
+        -webkit-box-shadow: 2px -1px 12px -2px rgba(255, 107, 8, 0.43);
+        -moz-box-shadow: 2px -1px 12px -2px rgba(255, 107, 8, 0.43);
+    
+        .film_card__title {
+            animation-name: cardimage;
+            animation-duration: 600ms;
+            animation-iteration-count: infinite;
+        }
 }
+
+
+
+
 
 @keyframes cardimage {
     0% {
         opacity: 0.5;
-        text-shadow: 0 0 10px rgba(255, 107, 8, 1),
-                0 0 20px rgba(255, 107, 8, 1), 
-                0 0 40px rgba(255, 107, 8, 1),
-                0 0 80px rgba(255, 107, 8, 1), 
-                0 0 160px rgba(255, 107, 8, 1), 
+        text-shadow: 0 0 5px rgba(255, 107, 8, 1),
+            0 0 10px rgba(255, 107, 8, 1),
+            0 0 20px rgba(255, 107, 8, 1),
+            
     }
 
-    97% {
+    100% {
         opacity: 1;
-        text-shadow: 0 0 10px rgba(255, 107, 8, 1),
-                0 0 20px rgba(255, 107, 8, 1),
-                0 0 40px rgba(255, 107, 8, 1),
-                0 0 80px rgba(255, 107, 8, 1),
-                0 0 160px rgba(255, 107, 8, 1),
+        text-shadow: 0 0 5px rgba(255, 107, 8, 1),
+            0 0 10px rgba(255, 107, 8, 1),
+            0 0 20px rgba(255, 107, 8, 1),
+           
     }
 }
+
+
+
+

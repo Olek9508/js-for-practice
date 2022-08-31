@@ -16,6 +16,29 @@ body {
     background: var(--color-secondary);
 }
 
+.dark_modal-window  {
+    background-color: var(--color-secondary);
+}
+
+.dark__close-icon{
+    fill: #ffffff;
+}
+
+.dark_modal-window__parameter-item {
+    color: var(--accent-color);
+}
+
+.dark_modal-window__amount {
+    color: white;
+}
+
+.dark_modal-window__button-watched,
+.dark_modal-window__button-queue{
+    background-color: transparent;
+    border-color: white;
+    color: #ffffff;
+}
+
 .footer {
     background: var(--color-secondary);
 }

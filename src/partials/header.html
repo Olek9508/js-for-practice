@@ -1,16 +1,16 @@
+
 <header class="header">
-  <div class="header-thumb hidden"></div>
-  <div class="container">
+  
+  <div class="container ">
+
     <div class="header-container">
-      <div class="header-menu">
-        <a href="./index.html" class="header-menu__logo">
-          <img
-            class="menu-logo__logo logo__images"
-            src="./images/logo.svg"
-            alt="logo"
-          />
+
+      <div class="header-menu heder-menu-library hidden container-navigation">
+        <div class="container_render_link">
+          <img class="menu-logo__logo logo__images" width="24" height="24" src="./images/logo.svg" alt="logo" />
           <h1 class="menu-logo__text logo-text__animation">Filmoteka</h1>
-        </a>
+        </div>
+        
         <ul class="header-menu__nav">
           <li class="menu-nav__link">
             <button id="home" class="nav-link__item current">HOME</button>
@@ -25,31 +25,34 @@
 
       <div class="header-main">
         <form class="header-search">
-          <input
-            name="querySearch"
-            class="search-input"
-            type="text"
-            placeholder="Movie search"
-          />
+          <input name="querySearch" class="search-input" type="text" placeholder="Movie search" />
           <svg class="search-icon">
             <use href="./images/symbol-defs.svg#icon-search"></use>
           </svg>
+          
+          
         </form>
+
         <div class="container error-container">
-          <p class="error-paragraph hide-error">
-            Search result not successful. Enter the correct movie name
+          <p class="request-paragraph">
           </p>
         </div>
-        <div class="container success-container">
-          <p class="success-paragraph">Search result is successful</p>
-        </div>
-        <div class="header-search__container unvisible">
-          <button class="library-button library-first active_btn">
-            WATCHED
-          </button>
-          <button class="library-button library-second">QUEUE</button>
-        </div>
+        
+        <ul class="header-search__container unvisible">
+          <li>
+            <button class="library-button library-first active_btn">WATCHED</button>
+          </li>
+          <li>
+            <button class="library-button library-second">QUEUE</button>
+          </li>
+
+        </ul>
+
+
+
       </div>
     </div>
+
   </div>
+
 </header>

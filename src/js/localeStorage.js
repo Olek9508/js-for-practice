@@ -42,19 +42,19 @@ function addToWatchedList({ poster_path,
     
     if (watchItemsArray.length !== 0){
         if (checkLocaleStorage(watchItemsArray, id)) {
-            addToWatchedButton.textContent = "add to wathed"
-            addToWatchedButtonText = "add to wathed"
+            addToWatchedButton.textContent = "add to watched"
+            addToWatchedButtonText = "add to watched"
             addToWatchedButton.classList.remove("modal-window__button-watched-checked")
         }else {
             watchItemsArray.push(watchedFilmsItem)
-            addToWatchedButton.textContent = "remove from wathed"
-            addToWatchedButtonText = "remove from wathed"
+            addToWatchedButton.textContent = "remove from watched"
+            addToWatchedButtonText = "remove from watched"
             addToWatchedButton.classList.add("modal-window__button-watched-checked")
         }
     } else {
         watchItemsArray.push(watchedFilmsItem)
-        addToWatchedButton.textContent = "remove from wathed"
-        addToWatchedButtonText = "remove from wathed"
+        addToWatchedButton.textContent = "remove from watched"
+        addToWatchedButtonText = "remove from watched"
         addToWatchedButton.classList.add("modal-window__button-watched-checked")
     }
 

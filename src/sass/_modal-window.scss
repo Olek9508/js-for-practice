@@ -5,6 +5,7 @@
     width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.2);
+    z-index: 3;
     
     opacity: 1;
     transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -155,23 +156,33 @@
     font-size: 12px;
     line-height: 1.33;
     margin-top: 0;
-    border-color: var(--accent-color);
-    background-color: var(--accent-color);
-    color: var(--secondary-white-text-color);
-}
+    color: var(--primary-text-color);
+    border-color: var(--primary-text-color);
+    background-color: var(--secondary-white-text-color);
+    transition: box-shadow 250ms linear, color 250ms linear, border-color color 250ms linear, background-color 250ms linear;
 
-// .modal-window__button-watched {
-//     border-color: var(--accent-color);
-//     background-color: var(--accent-color);
-//     color: var(--secondary-white-text-color);
-// }
+    &:hover {
+        border-color: var(--accent-color);
+        color: var(--secondary-white-text-color);
+        background-color: #e85303;
+        box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.53);
+    }
+    
+}
 
 .modal-window__button-watched-checked,
 .modal-window__button-queue-checked{
     
-    color: var(--primary-text-color);
-    border-color: var(--primary-text-color);
-    background-color: var(--secondary-white-text-color);
+    border-color: var(--accent-color);
+    background-color: var(--accent-color);
+    color: var(--secondary-white-text-color);
+    transition: box-shadow 250ms linear,
+    background-color 250ms linear;
+
+    &:hover {
+        background-color: #e85303;
+        box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.53)
+    }
 }
 
 .film_card {
@@ -196,6 +207,8 @@
         padding-top: 48px;
         padding-left: 20px;
         padding-right: 20px;
+        height: 100%;
+        overflow-y: auto;
     }
 
     .modal-window__image {

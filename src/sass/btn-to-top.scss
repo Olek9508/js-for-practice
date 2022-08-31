@@ -43,6 +43,13 @@ $dark-blue: #111c31;
             transform: rotate(-360deg);
         }
     }
+
+    @media screen and (max-width: 480px) {
+            width: 45px;
+            height: 45px;
+        }
+
+
 }
 
 .active {

@@ -4,6 +4,9 @@ const modalWindow = document.querySelector('.modal')
 const scrollPart = document.getElementById('scroll')
 let scrollDelay = null
 
+modalWindow.addEventListener ('mousedown', pauseScroll)
+modalWindow.addEventListener ('mouseup', resumeScroll)
+
 function openModalWindow() {
     backdrop.classList.remove('is-hidden');
     closeBtn.addEventListener('click', closeModalWindow);
@@ -39,6 +42,15 @@ closeFilmModalWindow()
 
 function pageScroll() {
   scrollPart.scrollBy(0,1);
+  scrollDelay = setTimeout(pageScroll, 10);
+  
+}
+
+function pauseScroll () {
+  clearTimeout(scrollDelay)
+}
+
+function resumeScroll () {
   scrollDelay = setTimeout(pageScroll, 10);
 }
 

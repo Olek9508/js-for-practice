@@ -1,5 +1,6 @@
 const input = document.querySelector('#slider');
 input.addEventListener('click', toggleTheme);
+input.addEventListener('click', modalTheme);
 
 // function to set a given theme/color-scheme
 function setTheme(themeName) {

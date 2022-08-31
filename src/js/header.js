@@ -1,51 +1,39 @@
+import { clearDefaultLibrary } from './libraries'
+
+import logoHeader from '../images/logo.svg';
+
+
 const headerRef = document.querySelector('.header');
 const headerThumb = document.querySelector('.header-thumb');
+const headerContainer = document.querySelector('.header-container');
+const headerMenu = document.querySelector('.header-menu');
+const headerMenues = document.querySelector('.container-navigation');
 
 const libraryBtn = document.querySelector('#library');
 const homeBtn = document.querySelector('#home');
-
 const inputContainer = document.querySelector('.header-search');
 const btnsContainer = document.querySelector('.header-search__container');
-
-// LIBRARY.addEventListener('click', onLibraryClick);
-// HOME.addEventListener('click', onHomeClick);
-
-import backImage from '../images/library-desktop.jpg';
-import backImageTablet from '../images/library-tablet.jpg';
-import backImagePhone from '../images/library-phone.jpg';
-
-// import mainBackImage from '../images/header-bg.jpg';
-
-const errorText = document.querySelector('.error-paragraph');
-const successText = document.querySelector('.success-paragraph');
+const requestParagraphRef = document.querySelector('.request-paragraph');
+const linkToLogoHeader = document.querySelector('.container_render_link');
 
 function onLibraryClick() {
+  renderLogoHeaderLibraPage() ;
   inputContainer.innerHTML = '';
+  requestParagraphRef.textContent = ''
+  headerMenues.classList.remove('header-menu')
+  headerRef.classList.add('headerforlibrary');
+  headerMenues.classList.add('header-menu_library');
   libraryBtn.classList.add('current');
   homeBtn.classList.remove('current');
   btnsContainer.classList.remove('unvisible');
-  headerThumb.classList.remove('hidden');
-  errorText.classList.add('hide-error');
-  successText.classList.remove('hide-success');
-
-  if (window.matchMedia('(min-width: 1280px)').matches) {
-    headerRef.style.backgroundImage = `url(${backImageTablet}`;
-    return;
-  }
-
-  if (window.matchMedia('(min-width: 768px)').matches) {
-    headerRef.style.backgroundImage = `url(${backImagePhone}`;
-    return;
-  }
-
-  if (window.matchMedia('(min-width: 0px)').matches) {
-    headerRef.style.backgroundImage = `url(${backImage}`;
-    return;
-  }
+  headerMenu.classList.remove('header-menu');
 }
 
 function onHomeClick() {
-  headerRef.style.backgroundImage = '';
+  clearDefaultLibrary();
+  renderLogoHeaderHomePage();
+  requestParagraphRef.textContent = ''
+  headerRef.classList.remove('headerforlibrary');
   inputContainer.innerHTML = `<input
   name="querySearch"
   class="search-input"
@@ -59,8 +47,29 @@ function onHomeClick() {
   homeBtn.classList.add('current');
   libraryBtn.classList.remove('current');
   btnsContainer.classList.add('unvisible');
-  headerThumb.classList.add('hidden');
-  //headerRef.style.backgroundImage = `url(${mainBackImage}`;
+  headerMenu.classList.remove('header-menu_library');
+  headerMenu.classList.add('header-menu');
 }
+
+function renderLogoHeaderLibraPage() {
+  linkToLogoHeader.innerHTML = 
+          `
+          <a href="./index.html" class="header-menu__logo">
+          <img class="menu-logo__logo logo__images" width="24" height="24" src="${logoHeader}" alt="logo" />
+          <h1 class="menu-logo__text logo-text__animation">Filmoteka</h1>
+          </a>
+          `;
+  
+}
+
+function renderLogoHeaderHomePage() {
+  linkToLogoHeader.innerHTML = 
+          `
+          <img class="menu-logo__logo logo__images" width="24" height="24" src="${logoHeader}" alt="logo" />
+          <h1 class="menu-logo__text logo-text__animation">Filmoteka</h1>
+          `;
+  
+};
+
 
 export { onLibraryClick, onHomeClick };

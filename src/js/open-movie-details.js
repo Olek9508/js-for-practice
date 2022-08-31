@@ -122,15 +122,15 @@ function createWathedFilmsBtnName(id) {
     let watchItemsArray = localStorage.getItem("watchedFilms") ? JSON.parse(localStorage.getItem("watchedFilms")) : []
     if (watchItemsArray.length > 0) {
         if (checkLocaleStorageModalWindow(watchItemsArray, id)) {
-            addToWatchedButtonText = "remove from wathed"
+            addToWatchedButtonText = "remove from watched"
             checkedAddToWathedBtnClass = "modal-window__button-watched-checked"
         }else {
-        addToWatchedButtonText = "add to wathed"
+        addToWatchedButtonText = "add to watched"
         checkedAddToWathedBtnClass = ""
     }
     }
     else {
-        addToWatchedButtonText = "add to wathed"
+        addToWatchedButtonText = "add to watched"
         checkedAddToWathedBtnClass = ""
     }
 }

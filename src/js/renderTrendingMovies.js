@@ -21,7 +21,7 @@ try {
         
             const imageUrl = poster_path
             ? `https://image.tmdb.org/t/p/w500/${poster_path}`
-            : `${defaultPoster}`;
+            : `https://lascrucesfilmfest.com/wp-content/uploads/2018/01/no-poster-available-737x1024.jpg`;
   
           const date = release_date ? release_date : first_air_date;
           const year = new Date(date).getFullYear();
@@ -30,16 +30,16 @@ try {
           const genresList = findGenresNames(genre_ids, genres.data.genres)
         return `
         <li class = "film_card" data-id="${id}">
-        <div class="film_card__img">
-           <img class="film_card__img--block"
-           src=${imageUrl}
-           alt="${name}">
-        </div>
-        <div class="film_card__box">
-          <h3 class="film_card__title">${name}</h3>
-          <p class="film_card__type">${genresList} | ${year}</p>
-          <p class="film_card__rating">Rating: ${vote}</p>
-        </div>
+          <div class="film_card__img">
+            <img class="film_card__img--block"
+            src=${imageUrl}
+            alt="${name}">
+          </div>
+          <div class="film_card__box">
+            <h3 class="film_card__title">${name}</h3>
+            <p class="film_card__type">${genresList} | ${year}</p>
+            <p class="film_card__rating">Rating: ${vote}</p>
+          </div>
         </li>
         `
       }

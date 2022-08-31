@@ -10,9 +10,8 @@ function preloadering() {
       preloader.classList.add('done')
     }
     
-  },100);
+  },200);
+
+
 }
 }
-
-export { preloadering }
-

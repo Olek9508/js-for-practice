@@ -12,7 +12,7 @@ import { toggleTheme } from './light-theme-switcher';
 import { openMovieDetails } from './open-movie-details';
 import { getInputValue, submitForm } from './search-by-keyword';
 import { debounce } from 'lodash';
-import { preloadering } from './preloader';
+
 
 const libraryButtonRef = document.querySelector('#library');
 const homeButtonRef = document.querySelector('#home');
@@ -21,7 +21,7 @@ const input = document.querySelector('#slider');
 const paginationButtons = document.querySelector('.pagination-nav');
 const gallery = document.querySelector('.films_list');
 const openBtn = document.querySelector('.footer__authorship');
-const loodashDebounce = 200;
+const loodashDebounce = 1000;
 
 inputRef.addEventListener('input', debounce(getInputValue, loodashDebounce));
 inputRef.addEventListener('submit', submitForm);
@@ -34,7 +34,7 @@ openBtn.addEventListener('click', openModalWindow);
 function openHomePage() {
   getTrendingMovies(1)
     .then(film => {
-      preloadering();
+
       onHomeClick();
       removeEventListenersOnPaginationButtons();
       paginationButtons.addEventListener('click', selectPageTrend);

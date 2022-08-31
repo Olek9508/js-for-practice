@@ -1,7 +1,7 @@
 <main>
   <h2 class="films_list__title">TOP Films</h2>
   <div class="container">
-    <div class="toggle__container ">
+    <div class="toggle__container">
       <div class="toggle__box">
         <label id="switch" class="switch">
           <input type="checkbox" id="slider" />
@@ -9,30 +9,68 @@
         </label>
         <!-- <button id="switch" onclick="toggleTheme()">Switch</button> -->
       </div>
+      <div id="btn-to-down">
+        <span><img src="https://i.ibb.co/5krn9rB/arrow-up.png" alt="" /></span>
+      </div>
       <div id="up-to-top">
         <span><img src="https://i.ibb.co/5krn9rB/arrow-up.png" alt="" /></span>
       </div>
-      <div class="conteiner_emptylibrary conteiner_emptylibrary-hidden ">
+      <div class="conteiner_emptylibrary conteiner_emptylibrary-hidden">
+        <p class="p-library">
+          Sorry, but you haven't added anything to your library yet
+        </p>
 
-          <p class="p-library"> Sorry, but you haven't added anything to your library yet </p>
+        <picture class="">
+          <source
+            srcset="
+              ./images/cinemaDesc-webp1.webp     1x,
+              ./images/cinemaDesc-webp1-@2x.webp 2x
+            "
+            media="(min-width: 1280px)"
+            type="image/webp"
+          />
+          <source
+            srcset="
+              ./images/cinemaDesc-1x.jpg  1x,
+              ./images/cinemaDesc-@2x.jpg 2x
+            "
+            media="(min-width: 1280px)"
+          />
 
-            <picture class="">
+          <source
+            srcset="
+              ./images/cinemaTab-webp1.webp    1x,
+              ./images/cinemaTab-webp-@2x.webp 2x
+            "
+            media="(min-width: 768px)"
+            type="image/webp"
+          />
+          <source
+            srcset="./images/cinemaTab-1x.jpg 1x, ./images/cinemaTab-@2x.jpg 2x"
+            media="(min-width: 768px)"
+          />
 
-              <source srcset="./images/cinemaDesc-webp1.webp 1x, ./images/cinemaDesc-webp1-@2x.webp 2x" media="(min-width: 1280px)" type="image/webp"/>
-              <source srcset="./images/cinemaDesc-1x.jpg 1x, ./images/cinemaDesc-@2x.jpg 2x" media="(min-width: 1280px)"/>
+          <source
+            srcset="
+              ./images/cinemaMob-webp1.webp    1x,
+              ./images/cinemaMob-webp-@2x.webp 2x
+            "
+            media="(max-width: 767px)"
+            type="image/webp"
+          />
+          <source
+            srcset="./images/cinemaMob-1x.jpg 1x, ./images/cinemaMob-@2x.jpg 2x"
+            media="(max-width: 767px)"
+          />
 
-              <source srcset="./images/cinemaTab-webp1.webp 1x, ./images/cinemaTab-webp-@2x.webp 2x" media="(min-width: 768px)" type="image/webp"/>
-              <source srcset="./images/cinemaTab-1x.jpg 1x, ./images/cinemaTab-@2x.jpg 2x" media="(min-width: 768px)"/>
-              
-              <source srcset="./images/cinemaMob-webp1.webp 1x, ./images/cinemaMob-webp-@2x.webp 2x" media="(max-width: 767px)"
-                type="image/webp"/>
-              <source srcset="./images/cinemaMob-1x.jpg 1x, ./images/cinemaMob-@2x.jpg 2x" media="(max-width: 767px)"/>
-
-              <img src="./images/cinemaDesc-1x.jpg" alt="Empty Cinema"  class="images-cinema"/>
-              
-            </picture>
+          <img
+            src="./images/cinemaDesc-1x.jpg"
+            alt="Empty Cinema"
+            class="images-cinema"
+          />
+        </picture>
       </div>
-      
+
       <ul class="films_list list flex container-library"></ul>
     </div>
   </div>

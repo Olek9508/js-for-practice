@@ -15,10 +15,12 @@ const inputContainer = document.querySelector('.header-search');
 const btnsContainer = document.querySelector('.header-search__container');
 const requestParagraphRef = document.querySelector('.request-paragraph');
 const linkToLogoHeader = document.querySelector('.container_render_link');
+const errorConatainer = document.querySelector('.request-paragraph');
 
 function onLibraryClick() {
   renderLogoHeaderLibraPage() ;
   inputContainer.innerHTML = '';
+  errorConatainer.innerHTML = '';
   requestParagraphRef.textContent = ''
   headerMenues.classList.remove('header-menu')
   headerRef.classList.add('headerforlibrary');

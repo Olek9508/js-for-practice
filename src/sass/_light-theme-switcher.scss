@@ -41,13 +41,8 @@ body {
 .toggle__box{
     padding-top: 15px;
     padding-bottom: 15px;
-
     display: flex;
     justify-content: center;
-
-    @media screen and (min-width: 1280px) {
-        justify-content: start;
-    }
 }
 
 

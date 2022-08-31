@@ -3,10 +3,10 @@ $lightBlue-900: #01579b;
 $lightBlue-700: #0091ea;
 $dark-blue: #111c31;
 
-#up-to-top {
+#btn-to-down {
     z-index: 999;
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -15,8 +15,12 @@ $dark-blue: #111c31;
     background-color: rgb(243, 153, 7);
     border-radius: 100%;
     position: fixed;
-    bottom: 40px;
-    right: 25px;
+    top: 150px;
+    right: 15px;
+
+    @media screen and (min-width: 1280px) {
+        top: 130px;
+        }
     cursor: pointer;
     color: #fff;
     box-shadow: 0 0 25px rgba(250, 158, 0, 0.5);
@@ -27,6 +31,7 @@ $dark-blue: #111c31;
     span {
         max-width: 35px;
         transition: 0.3s ease-in-out;
+        transform: rotate(-180deg);
 
         img {
             object-fit: cover;
@@ -38,21 +43,15 @@ $dark-blue: #111c31;
     &:hover {
         box-shadow: 0 0 30px rgba(0, 0, 0, 0.97);
         background-color: rgba(243, 153, 7, 0.836);
-
-        span {
-            transform: rotate(-360deg);
-        }
+        transform: rotate(-360deg);
     }
-
-    @media screen and (max-width: 480px) {
-            width: 45px;
-            height: 45px;
-        }
-
-
 }
 
 .active {
     visibility: visible !important;
     opacity: 1 !important;
+}
+
+.hide-btn{
+    display: none;
 }

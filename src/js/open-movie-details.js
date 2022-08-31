@@ -27,21 +27,21 @@ function openMovieDetails(event) {
         selectedFilm = event.target;
     };
 
-    openFilmModalWindow(selectedFilm.getAttribute("data-id"))
+    openFilmModalWindow(selectedFilm.getAttribute("data-id"), selectedFilm.getAttribute("data-library"))
 
     createWathedFilmsBtnName(selectedFilm.getAttribute("data-id"))
     createQueueFilmsBtnName(selectedFilm.getAttribute("data-id"))
 
 }
 
-function buildFilmData(data) {
+function buildFilmData(data, atr) {
     getMovieDetails(data).then(film => {
         modalData.innerHTML = ''
         modalData.insertAdjacentHTML('beforeend', renderFilmData(film.data))
         let addToWatchedButton = document.querySelector(".modal-window__button-watched")
         let addToQueueButton = document.querySelector(".modal-window__button-queue")
-        addToWatchedButton.addEventListener('click', () => addToWatchedList(film.data,addToWatchedButtonText,addToWatchedButton))
-        addToQueueButton.addEventListener('click', () => addToQueueList(film.data,addToQueueButtonText,addToQueueButton))
+        addToWatchedButton.addEventListener('click', () => addToWatchedList(film.data,addToWatchedButtonText,addToWatchedButton, atr))
+        addToQueueButton.addEventListener('click', () => addToQueueList(film.data,addToQueueButtonText,addToQueueButton, atr))
 
     })
     .catch('error')
@@ -89,12 +89,12 @@ function renderFilmData(data) {
     `
 }
 
-function openFilmModalWindow(data) {
+function openFilmModalWindow(data, atr) {
     document.body.style.overflow = "hidden";
     backdrop.classList.remove('is-hidden');
     closeBtn.addEventListener('click', closeFilmModalWindow);
     backdrop.addEventListener('click', closeFilmBackdrop);
-    buildFilmData(data)
+    buildFilmData(data, atr)
 }
 
 function closeFilmModalWindow() {

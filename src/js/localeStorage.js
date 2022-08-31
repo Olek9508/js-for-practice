@@ -1,3 +1,5 @@
+import { renderQueueCards, renderWachedCards } from './libraries'
+
 let watchItemsArray = []
 let queueItemsArray = []
 
@@ -28,7 +30,7 @@ function addToWatchedList({ poster_path,
     release_date,
     first_air_date,
     vote_average,
-    id }, addToWatchedButtonText, addToWatchedButton) {
+    id }, addToWatchedButtonText, addToWatchedButton, atr) {
     watchItemsArray = localStorage.getItem("watchedFilms") ? JSON.parse(localStorage.getItem("watchedFilms")) : []
     localStorage.removeItem("watchedFilms")
     const watchedFilmsItem = new localeStorageItem(poster_path,
@@ -59,6 +61,9 @@ function addToWatchedList({ poster_path,
     }
 
     localStorage.setItem("watchedFilms", JSON.stringify(watchItemsArray))
+    if (atr === "watched") {
+        renderWachedCards()
+    }
 }
 
 
@@ -94,7 +99,7 @@ function addToQueueList({ poster_path,
     release_date,
     first_air_date,
     vote_average,
-    id },addToQueueButtonText,addToQueueButton) {
+    id },addToQueueButtonText,addToQueueButton, atr) {
     queueItemsArray = localStorage.getItem("queueFilms") ? JSON.parse(localStorage.getItem("queueFilms")) : []
     localStorage.removeItem("queueFilms")
 
@@ -126,6 +131,9 @@ function addToQueueList({ poster_path,
     }
     
     localStorage.setItem("queueFilms", JSON.stringify(queueItemsArray))
+    if (atr === "queue") {
+        renderQueueCards()
+    }
 }
 
 export { addToWatchedList, addToQueueList, checkLocaleStorageModalWindow}

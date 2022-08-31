@@ -1,17 +1,11 @@
 import defaultLibraryDesc from '../images/cinemaDesc-1x.jpg';
 import defaultLibraryTab from '../images/cinemaTab-1x.jpg';
 import defaultLibraryMob from '../images/cinemaMob-1x.jpg';
-
-import { errorText } from '../js/search-by-keyword';
-
-
 import { preloadering } from '../js/preloader'
 import { selectPageWatched, selectPageQueue, selectPageWatched, removeEventListenersOnPaginationButtons, renderButtonsOfPagination } from './pagination';
 
 const divConatiner = document.querySelector('.container-library');
-
 const defaultConteiner = document.querySelector('.conteiner_emptylibrary');
-
 const paginationButtons = document.querySelector(".pagination-nav");
 const btnWached = document.querySelector('.library-first');
 const btnQueue = document.querySelector('.library-second');
@@ -56,13 +50,13 @@ function renderQueueMoviesList(start, end, page) {
         }
       }
   
-      renderListFilms(renderedArray)
+      renderListFilms(renderedArray, "queue")
       renderButtonsOfPagination(Math.ceil(arraylocalStorageQueue.length/18), page)
     }
   }
 }
 
-function renderQueueCards(start = 0, end = 18, page) {  
+function renderQueueCards(start = 0, end = 18, page = 1) {  
   removeEventListenersOnPaginationButtons()
   paginationButtons.addEventListener('click', selectPageQueue)
 
@@ -97,7 +91,7 @@ function renderQueueCards(start = 0, end = 18, page) {
       }
     }
 
-    renderListFilms(renderedArray)
+    renderListFilms(renderedArray,"queue")
     renderButtonsOfPagination(Math.ceil(arraylocalStorageQueue.length/18), page)
   }
 }
@@ -142,13 +136,13 @@ function renderWatchedMoviesList (start, end, page) {
         }
       }
   
-      renderListFilms(renderedArray)
+      renderListFilms(renderedArray, "watched")
       renderButtonsOfPagination(Math.ceil(arrayLocalWachFilm.length/18), page)     
     }
   }  
 }
 
-function renderWachedCards(start = 0, end = 18, page) {
+function renderWachedCards(start = 0, end = 18, page = 1) {
   removeEventListenersOnPaginationButtons();
   paginationButtons.addEventListener('click', selectPageWatched);
 
@@ -182,7 +176,7 @@ function renderWachedCards(start = 0, end = 18, page) {
       }
     }
 
-    renderListFilms(renderedArray)
+    renderListFilms(renderedArray, "watched")
     renderButtonsOfPagination(Math.ceil(arrayLocalWachFilm.length/18), page)    
   }
 }  
@@ -201,7 +195,7 @@ function preloaderfunction() {
     
 }
 
-function renderListFilms(arays) {
+function renderListFilms(arays, atr) {
   for (const aray of arays) {
     const imageUrl = aray.poster_path
       ? `https://image.tmdb.org/t/p/w500/${aray.poster_path}`
@@ -209,7 +203,7 @@ function renderListFilms(arays) {
     const year = new Date(aray.release_date).getFullYear();
     const typeList = generateTypeMovies(aray.genres);
     const cardwachfil = `
-                        <li class = "film_card" data-id="${aray.id}">
+                        <li class = "film_card" data-id="${aray.id}" data-library="${atr}">
                         <div class="film_card__img">
                         <img class="film_card__img--block"
                         src=${imageUrl}

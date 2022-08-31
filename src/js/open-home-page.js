@@ -21,7 +21,7 @@ const input = document.querySelector('#slider');
 const paginationButtons = document.querySelector('.pagination-nav');
 const gallery = document.querySelector('.films_list');
 const openBtn = document.querySelector('.footer__authorship');
-const loodashDebounce = 1000;
+const loodashDebounce = 200;
 
 inputRef.addEventListener('input', debounce(getInputValue, loodashDebounce));
 inputRef.addEventListener('submit', submitForm);
